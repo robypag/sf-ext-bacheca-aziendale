@@ -1,0 +1,78 @@
+{
+  "name": "sf-ext-bacheca-aziendale",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap/cds": "^4",
+    "@sap/xsenv": "^3.1.0",
+    "@sap/xssec": "^3.1.1",
+    "express": "^4",
+    "passport": "^0.4.1"
+  },
+  "devDependencies": {
+    "sqlite3": "5.0.0"
+  },
+  "scripts": {
+    "start": "cds run"
+  },
+  "cds": {
+    "requires": {
+      "auth": {
+        "strategy": "mock",
+        "users": {
+          "admin": {
+            "password": "admin",
+            "roles": [
+              "admin-user"
+            ],
+            "user-attributes": {
+              "Area": "National"
+            }
+          },
+          "PLGGMR78D09F205Q": {
+            "password": "password",
+            "roles": [
+              "employee"
+            ]
+          }
+        }
+      },
+      "ECFoundationOrganization": {
+        "kind": "odata",
+        "model": "srv/external/ECFoundationOrganization",
+        "credentials": {
+          "url": "https://api2.successfactors.eu/",
+          "path": "/odata/v2",
+          "requestTimeout": 18000000,
+          "username": "SFAPI@italgasretD",
+          "password": "password"
+        }
+      },
+      "ECEmploymentInformation": {
+        "kind": "odata",
+        "model": "srv/external/ECEmploymentInformation",
+        "credentials": {
+          "url": "https://api2.successfactors.eu/",
+          "path": "/odata/v2",
+          "requestTimeout": 18000000,
+          "username": "SFAPI@italgasretD",
+          "password": "password"
+        }
+      },
+      "PLTUserManagement": {
+        "kind": "odata",
+        "model": "srv/external/PLTUserManagement",
+        "credentials": {
+          "url": "https://api2.successfactors.eu/",
+          "path": "/odata/v2",
+          "requestTimeout": 18000000,
+          "username": "SFAPI@italgasretD",
+          "password": "password"
+        }
+      }
+    }
+  }
+}

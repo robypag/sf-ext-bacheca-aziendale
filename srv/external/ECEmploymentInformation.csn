@@ -1,0 +1,914 @@
+{
+  "definitions": {
+    "ECEmploymentInformation": {
+      "kind": "service"
+    },
+    "ECEmploymentInformation.EmpEmployment": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "personIdExternal": {
+          "key": true,
+          "type": "cds.String",
+          "length": 100
+        },
+        "userId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 100
+        },
+        "StockEndDate": {
+          "type": "cds.Date"
+        },
+        "assignmentClass": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "benefitsEligibilityStartDate": {
+          "type": "cds.Date"
+        },
+        "benefitsEndDate": {
+          "type": "cds.Date"
+        },
+        "bonusPayExpirationDate": {
+          "type": "cds.Date"
+        },
+        "createdBy": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "createdDateTime": {
+          "type": "cds.Timestamp"
+        },
+        "createdOn": {
+          "type": "cds.Date"
+        },
+        "eligibleForSalContinuation": {
+          "type": "cds.Boolean"
+        },
+        "eligibleForStock": {
+          "type": "cds.Boolean"
+        },
+        "employeeFirstEmployment": {
+          "type": "cds.Boolean"
+        },
+        "endDate": {
+          "type": "cds.Date"
+        },
+        "firstDateWorked": {
+          "type": "cds.Date"
+        },
+        "includeAllRecords": {
+          "type": "cds.Boolean"
+        },
+        "initialOptionGrant": {
+          "type": "cds.Double"
+        },
+        "initialStockGrant": {
+          "type": "cds.Double"
+        },
+        "isContingentWorker": {
+          "type": "cds.Boolean"
+        },
+        "isECRecord": {
+          "type": "cds.Boolean"
+        },
+        "jobNumber": {
+          "type": "cds.Integer64"
+        },
+        "lastDateWorked": {
+          "type": "cds.Date"
+        },
+        "lastModifiedBy": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.Timestamp"
+        },
+        "lastModifiedOn": {
+          "type": "cds.Date"
+        },
+        "okToRehire": {
+          "type": "cds.Boolean"
+        },
+        "originalStartDate": {
+          "type": "cds.Date"
+        },
+        "payrollEndDate": {
+          "type": "cds.Date"
+        },
+        "prevEmployeeId": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "professionalServiceDate": {
+          "type": "cds.Date"
+        },
+        "regretTermination": {
+          "type": "cds.Boolean"
+        },
+        "salaryEndDate": {
+          "type": "cds.Date"
+        },
+        "seniorityDate": {
+          "type": "cds.Date"
+        },
+        "serviceDate": {
+          "type": "cds.Date"
+        },
+        "startDate": {
+          "type": "cds.Date"
+        },
+        "empJobRelationshipNav": {
+          "type": "cds.Association",
+          "target": "ECEmploymentInformation.EmpJobRelationships",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "empWorkPermitNav": {
+          "type": "cds.Association",
+          "target": "ECEmploymentInformation.EmpWorkPermit",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "jobInfoNav": {
+          "type": "cds.Association",
+          "target": "ECEmploymentInformation.EmpJob",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "empPensionPayoutNav": {
+          "type": "cds.Association",
+          "target": "ECEmploymentInformation.EmpPensionPayout"
+        },
+        "empBeneficiaryNav": {
+          "type": "cds.Association",
+          "target": "ECEmploymentInformation.EmpBeneficiary"
+        }
+      }
+    },
+    "ECEmploymentInformation.EmpEmploymentTermination": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "endDate": {
+          "key": true,
+          "type": "cds.Date"
+        },
+        "personIdExternal": {
+          "key": true,
+          "type": "cds.String",
+          "length": 100
+        },
+        "userId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 100
+        },
+        "StockEndDate": {
+          "type": "cds.Date"
+        },
+        "attachmentId": {
+          "type": "cds.LargeString"
+        },
+        "benefitsEndDate": {
+          "type": "cds.Date"
+        },
+        "bonusPayExpirationDate": {
+          "type": "cds.Date"
+        },
+        "createdBy": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "createdDateTime": {
+          "type": "cds.Timestamp"
+        },
+        "createdOn": {
+          "type": "cds.Date"
+        },
+        "eligibleForSalContinuation": {
+          "type": "cds.Boolean"
+        },
+        "eventReason": {
+          "type": "cds.LargeString"
+        },
+        "lastDateWorked": {
+          "type": "cds.Date"
+        },
+        "lastModifiedBy": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.Timestamp"
+        },
+        "lastModifiedOn": {
+          "type": "cds.Date"
+        },
+        "newMainEmploymentId": {
+          "type": "cds.DecimalFloat"
+        },
+        "notes": {
+          "type": "cds.String",
+          "length": 4000
+        },
+        "okToRehire": {
+          "type": "cds.Boolean"
+        },
+        "payrollEndDate": {
+          "type": "cds.Date"
+        },
+        "regretTermination": {
+          "type": "cds.Boolean"
+        },
+        "salaryEndDate": {
+          "type": "cds.Date"
+        },
+        "employmentNav": {
+          "type": "cds.Association",
+          "target": "ECEmploymentInformation.EmpEmployment"
+        },
+        "jobInfoNav": {
+          "type": "cds.Association",
+          "target": "ECEmploymentInformation.EmpJob"
+        }
+      }
+    },
+    "ECEmploymentInformation.EmpWorkPermit": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "country": {
+          "key": true,
+          "type": "cds.String",
+          "length": 256
+        },
+        "documentNumber": {
+          "key": true,
+          "type": "cds.String",
+          "length": 256
+        },
+        "documentType": {
+          "key": true,
+          "type": "cds.String",
+          "length": 256
+        },
+        "userId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 100
+        },
+        "attachment": {
+          "type": "cds.LargeBinary"
+        },
+        "attachmentFileName": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "attachmentFileSize": {
+          "type": "cds.DecimalFloat"
+        },
+        "attachmentFileType": {
+          "type": "cds.String",
+          "length": 5
+        },
+        "attachmentId": {
+          "type": "cds.LargeString"
+        },
+        "attachmentMimeType": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "attachmentStatus": {
+          "type": "cds.DecimalFloat"
+        },
+        "createdBy": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "createdDateTime": {
+          "type": "cds.Timestamp"
+        },
+        "createdOn": {
+          "type": "cds.Date"
+        },
+        "documentTitle": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "expirationDate": {
+          "type": "cds.Date"
+        },
+        "isValidated": {
+          "type": "cds.Boolean"
+        },
+        "issueDate": {
+          "type": "cds.Date"
+        },
+        "issuePlace": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "issuingAuthority": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "lastModifiedBy": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.Timestamp"
+        },
+        "lastModifiedOn": {
+          "type": "cds.Date"
+        },
+        "notes": {
+          "type": "cds.String",
+          "length": 4000
+        },
+        "employmentNav": {
+          "type": "cds.Association",
+          "target": "ECEmploymentInformation.EmpEmployment"
+        }
+      }
+    },
+    "ECEmploymentInformation.EmpJobRelationships": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "relationshipType": {
+          "key": true,
+          "type": "cds.String",
+          "length": 100
+        },
+        "startDate": {
+          "key": true,
+          "type": "cds.Date"
+        },
+        "userId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 100
+        },
+        "createdBy": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "createdDateTime": {
+          "type": "cds.Timestamp"
+        },
+        "createdOn": {
+          "type": "cds.Date"
+        },
+        "endDate": {
+          "type": "cds.Date"
+        },
+        "lastModifiedBy": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.Timestamp"
+        },
+        "lastModifiedOn": {
+          "type": "cds.Date"
+        },
+        "operation": {
+          "type": "cds.LargeString"
+        },
+        "relUserId": {
+          "type": "cds.String",
+          "length": 384
+        },
+        "employmentNav": {
+          "type": "cds.Association",
+          "target": "ECEmploymentInformation.EmpEmployment"
+        },
+        "relEmploymentNav": {
+          "type": "cds.Association",
+          "target": "ECEmploymentInformation.EmpEmployment"
+        }
+      }
+    },
+    "ECEmploymentInformation.EmpJob": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "seqNumber": {
+          "key": true,
+          "type": "cds.Integer64"
+        },
+        "startDate": {
+          "key": true,
+          "type": "cds.Date"
+        },
+        "userId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 100
+        },
+        "businessUnit": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "company": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "companyEntryDate": {
+          "type": "cds.Date"
+        },
+        "contractEndDate": {
+          "type": "cds.Date"
+        },
+        "contractType": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "costCenter": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "countryOfCompany": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "createdBy": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "createdDateTime": {
+          "type": "cds.Timestamp"
+        },
+        "createdOn": {
+          "type": "cds.Date"
+        },
+        "customDate1": {
+          "type": "cds.Date"
+        },
+        "customDate10": {
+          "type": "cds.Date"
+        },
+        "customDate11": {
+          "type": "cds.Date"
+        },
+        "customDate12": {
+          "type": "cds.Date"
+        },
+        "customDate13": {
+          "type": "cds.Date"
+        },
+        "customDate14": {
+          "type": "cds.Date"
+        },
+        "customDate15": {
+          "type": "cds.Date"
+        },
+        "customDate16": {
+          "type": "cds.Date"
+        },
+        "customDate17": {
+          "type": "cds.Date"
+        },
+        "customDate2": {
+          "type": "cds.Date"
+        },
+        "customDate3": {
+          "type": "cds.Date"
+        },
+        "customDate4": {
+          "type": "cds.Date"
+        },
+        "customDate5": {
+          "type": "cds.Date"
+        },
+        "customDate6": {
+          "type": "cds.Date"
+        },
+        "customDate7": {
+          "type": "cds.Date"
+        },
+        "customDate8": {
+          "type": "cds.Date"
+        },
+        "customString10": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString11": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString12": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString13": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString14": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "customString15": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "customString16": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "customString17": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString18": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString19": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString20": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString21": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString22": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "customString23": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString25": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString26": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString27": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString28": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString29": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString3": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString30": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString31": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString32": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString33": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString34": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString35": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString36": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString37": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString38": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString39": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString4": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString40": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString41": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString42": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString43": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString44": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString45": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString46": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString47": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString6": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString8": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "customString9": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "department": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "departmentEntryDate": {
+          "type": "cds.Date"
+        },
+        "division": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "emplStatus": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "employeeClass": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "employmentType": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "endDate": {
+          "type": "cds.Date"
+        },
+        "event": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "eventReason": {
+          "type": "cds.LargeString"
+        },
+        "expectedReturnDate": {
+          "type": "cds.Date"
+        },
+        "fte": {
+          "type": "cds.Double"
+        },
+        "hireDate": {
+          "type": "cds.Date"
+        },
+        "isFulltimeEmployee": {
+          "type": "cds.Boolean"
+        },
+        "jobCode": {
+          "type": "cds.String",
+          "length": 32
+        },
+        "jobEntryDate": {
+          "type": "cds.Date"
+        },
+        "jobTitle": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "lastModifiedBy": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.Timestamp"
+        },
+        "lastModifiedOn": {
+          "type": "cds.Date"
+        },
+        "location": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "locationEntryDate": {
+          "type": "cds.Date"
+        },
+        "managerId": {
+          "type": "cds.String",
+          "length": 256
+        },
+        "notes": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "operation": {
+          "type": "cds.LargeString"
+        },
+        "payScaleArea": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "payScaleGroup": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "payScaleLevel": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "payScaleLevelEntryDate": {
+          "type": "cds.Date"
+        },
+        "payScaleType": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "position": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "positionEntryDate": {
+          "type": "cds.Date"
+        },
+        "probationPeriodEndDate": {
+          "type": "cds.Date"
+        },
+        "terminationDate": {
+          "type": "cds.Date"
+        },
+        "timezone": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "employmentNav": {
+          "type": "cds.Association",
+          "target": "ECEmploymentInformation.EmpEmployment"
+        }
+      }
+    },
+    "ECEmploymentInformation.PersonEmpTerminationInfo": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "personIdExternal": {
+          "key": true,
+          "type": "cds.String",
+          "length": 100
+        },
+        "activeEmploymentsCount": {
+          "type": "cds.Integer"
+        },
+        "latestTerminationDate": {
+          "type": "cds.Date"
+        }
+      }
+    },
+    "ECEmploymentInformation.EmpPensionPayout": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "userId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 100
+        },
+        "createdBy": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "createdDateTime": {
+          "type": "cds.Timestamp"
+        },
+        "createdOn": {
+          "type": "cds.Date"
+        },
+        "endDate": {
+          "type": "cds.Date"
+        },
+        "lastModifiedBy": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.Timestamp"
+        },
+        "lastModifiedOn": {
+          "type": "cds.Date"
+        },
+        "payrollEndDate": {
+          "type": "cds.Date"
+        },
+        "personIdExternal": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "plannedEndDate": {
+          "type": "cds.Date"
+        },
+        "startDate": {
+          "type": "cds.Date"
+        },
+        "employmentNav": {
+          "type": "cds.Association",
+          "target": "ECEmploymentInformation.EmpEmployment"
+        }
+      }
+    },
+    "ECEmploymentInformation.EmpBeneficiary": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "userId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 100
+        },
+        "createdBy": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "createdDateTime": {
+          "type": "cds.Timestamp"
+        },
+        "createdOn": {
+          "type": "cds.Date"
+        },
+        "endDate": {
+          "type": "cds.Date"
+        },
+        "lastModifiedBy": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.Timestamp"
+        },
+        "lastModifiedOn": {
+          "type": "cds.Date"
+        },
+        "payrollEndDate": {
+          "type": "cds.Date"
+        },
+        "personIdExternal": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "plannedEndDate": {
+          "type": "cds.Date"
+        },
+        "startDate": {
+          "type": "cds.Date"
+        },
+        "employmentNav": {
+          "type": "cds.Association",
+          "target": "ECEmploymentInformation.EmpEmployment"
+        }
+      }
+    }
+  }
+}

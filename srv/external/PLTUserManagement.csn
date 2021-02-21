@@ -1,0 +1,1037 @@
+{
+  "definitions": {
+    "PLTUserManagement": {
+      "kind": "service"
+    },
+    "PLTUserManagement.User": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "userId": {
+          "key": true,
+          "type": "cds.String",
+          "length": 100
+        },
+        "addressLine1": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "addressLine2": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "addressLine3": {
+          "type": "cds.LargeString"
+        },
+        "benchStrength": {
+          "type": "cds.LargeString"
+        },
+        "bonusBudgetAmount": {
+          "type": "cds.Double"
+        },
+        "bonusTarget": {
+          "type": "cds.Double"
+        },
+        "businessPhone": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "businessSegment": {
+          "type": "cds.LargeString"
+        },
+        "cellPhone": {
+          "type": "cds.LargeString"
+        },
+        "citizenship": {
+          "type": "cds.LargeString"
+        },
+        "city": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "compensationBonusEligible": {
+          "type": "cds.Boolean"
+        },
+        "compensationEligible": {
+          "type": "cds.Boolean"
+        },
+        "compensationReadOnly": {
+          "type": "cds.Boolean"
+        },
+        "compensationSalaryEligible": {
+          "type": "cds.Boolean"
+        },
+        "compensationSalaryRateType": {
+          "type": "cds.LargeString"
+        },
+        "compensationSalaryRateUnits": {
+          "type": "cds.Integer64"
+        },
+        "compensationStockEligible": {
+          "type": "cds.Boolean"
+        },
+        "competency": {
+          "type": "cds.DecimalFloat"
+        },
+        "country": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "criticalTalentComments": {
+          "type": "cds.LargeString"
+        },
+        "custom01": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "custom02": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "custom03": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "custom04": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "custom05": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "custom06": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "custom07": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "custom08": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "custom09": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "custom10": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "custom11": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "custom12": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "custom13": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "custom14": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "custom15": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "dateOfBirth": {
+          "type": "cds.Date"
+        },
+        "dateOfCurrentPosition": {
+          "type": "cds.Date"
+        },
+        "dateOfPosition": {
+          "type": "cds.Date"
+        },
+        "defaultFullName": {
+          "type": "cds.LargeString"
+        },
+        "defaultLocale": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "department": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "division": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "email": {
+          "type": "cds.LargeString"
+        },
+        "empId": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "employeeClass": {
+          "type": "cds.LargeString"
+        },
+        "ethnicity": {
+          "type": "cds.LargeString"
+        },
+        "fax": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "finalJobCode": {
+          "type": "cds.LargeString"
+        },
+        "finalJobFamily": {
+          "type": "cds.LargeString"
+        },
+        "finalJobRole": {
+          "type": "cds.LargeString"
+        },
+        "firstName": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "futureLeader": {
+          "type": "cds.Boolean"
+        },
+        "gender": {
+          "type": "cds.String",
+          "length": 2
+        },
+        "hireDate": {
+          "type": "cds.Date"
+        },
+        "homePhone": {
+          "type": "cds.LargeString"
+        },
+        "impactOfLoss": {
+          "type": "cds.LargeString"
+        },
+        "impactOfLossComments": {
+          "type": "cds.LargeString"
+        },
+        "issueComments": {
+          "type": "cds.LargeString"
+        },
+        "jobCode": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "jobFamily": {
+          "type": "cds.LargeString"
+        },
+        "jobLevel": {
+          "type": "cds.LargeString"
+        },
+        "jobRole": {
+          "type": "cds.LargeString"
+        },
+        "jobTitle": {
+          "type": "cds.LargeString"
+        },
+        "keyPosition": {
+          "type": "cds.Boolean"
+        },
+        "lastModified": {
+          "type": "cds.Date"
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.Timestamp"
+        },
+        "lastModifiedWithTZ": {
+          "type": "cds.Timestamp"
+        },
+        "lastName": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "lastReviewDate": {
+          "type": "cds.LargeString"
+        },
+        "level": {
+          "type": "cds.LargeString"
+        },
+        "localCurrencyCode": {
+          "type": "cds.LargeString"
+        },
+        "location": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "lumpsum2Target": {
+          "type": "cds.Double"
+        },
+        "lumpsumTarget": {
+          "type": "cds.Double"
+        },
+        "married": {
+          "type": "cds.Boolean"
+        },
+        "matrix1Label": {
+          "type": "cds.LargeString"
+        },
+        "matrix2Label": {
+          "type": "cds.LargeString"
+        },
+        "matrixManaged": {
+          "type": "cds.Boolean"
+        },
+        "meritEffectiveDate": {
+          "type": "cds.Date"
+        },
+        "meritTarget": {
+          "type": "cds.Date"
+        },
+        "mi": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "minority": {
+          "type": "cds.Boolean"
+        },
+        "nationality": {
+          "type": "cds.LargeString"
+        },
+        "newToPosition": {
+          "type": "cds.Boolean"
+        },
+        "nickname": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "objective": {
+          "type": "cds.DecimalFloat"
+        },
+        "onboardingId": {
+          "type": "cds.LargeString"
+        },
+        "origHireDate": {
+          "type": "cds.Date"
+        },
+        "password": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "payGrade": {
+          "type": "cds.LargeString"
+        },
+        "performance": {
+          "type": "cds.DecimalFloat"
+        },
+        "potential": {
+          "type": "cds.DecimalFloat"
+        },
+        "promotionAmount": {
+          "type": "cds.Double"
+        },
+        "raiseProrating": {
+          "type": "cds.Double"
+        },
+        "reasonForLeaving": {
+          "type": "cds.LargeString"
+        },
+        "reloComments": {
+          "type": "cds.LargeString"
+        },
+        "reloLocation": {
+          "type": "cds.LargeString"
+        },
+        "reloWilling": {
+          "type": "cds.LargeString"
+        },
+        "reviewFreq": {
+          "type": "cds.String",
+          "length": 200000000
+        },
+        "riskOfLoss": {
+          "type": "cds.LargeString"
+        },
+        "salary": {
+          "type": "cds.Double"
+        },
+        "salaryBudgetExtra2Percentage": {
+          "type": "cds.Double"
+        },
+        "salaryBudgetExtraPercentage": {
+          "type": "cds.Double"
+        },
+        "salaryBudgetFinalSalaryPercentage": {
+          "type": "cds.Double"
+        },
+        "salaryBudgetLumpsumPercentage": {
+          "type": "cds.Double"
+        },
+        "salaryBudgetMeritPercentage": {
+          "type": "cds.Double"
+        },
+        "salaryBudgetPromotionPercentage": {
+          "type": "cds.Double"
+        },
+        "salaryBudgetTotalRaisePercentage": {
+          "type": "cds.Double"
+        },
+        "salaryLocal": {
+          "type": "cds.Double"
+        },
+        "salaryProrating": {
+          "type": "cds.Double"
+        },
+        "salutation": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "sciLastModified": {
+          "type": "cds.Timestamp"
+        },
+        "seatingChart": {
+          "type": "cds.LargeString"
+        },
+        "serviceDate": {
+          "type": "cds.Date"
+        },
+        "ssn": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "state": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "status": {
+          "type": "cds.String",
+          "length": 17
+        },
+        "stockBudgetOptionAmount": {
+          "type": "cds.Double"
+        },
+        "stockBudgetOther1Amount": {
+          "type": "cds.Double"
+        },
+        "stockBudgetOther2Amount": {
+          "type": "cds.Double"
+        },
+        "stockBudgetOther3Amount": {
+          "type": "cds.Double"
+        },
+        "stockBudgetStockAmount": {
+          "type": "cds.Double"
+        },
+        "stockBudgetUnitAmount": {
+          "type": "cds.Double"
+        },
+        "suffix": {
+          "type": "cds.String",
+          "length": 128
+        },
+        "sysCostOfSource": {
+          "type": "cds.DecimalFloat"
+        },
+        "sysSource": {
+          "type": "cds.Integer"
+        },
+        "sysStartingSalary": {
+          "type": "cds.DecimalFloat"
+        },
+        "timeZone": {
+          "type": "cds.String",
+          "length": 16
+        },
+        "title": {
+          "type": "cds.String",
+          "length": 255
+        },
+        "totalTeamSize": {
+          "type": "cds.Integer64"
+        },
+        "username": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "veteranDisabled": {
+          "type": "cds.Boolean"
+        },
+        "veteranMedal": {
+          "type": "cds.Boolean"
+        },
+        "veteranProtected": {
+          "type": "cds.Boolean"
+        },
+        "veteranSeparated": {
+          "type": "cds.Boolean"
+        },
+        "zipCode": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "customManager": {
+          "type": "cds.Association",
+          "target": "PLTUserManagement.User",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "customReports": {
+          "type": "cds.Association",
+          "target": "PLTUserManagement.User",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "directReports": {
+          "type": "cds.Association",
+          "target": "PLTUserManagement.User",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "hr": {
+          "type": "cds.Association",
+          "target": "PLTUserManagement.User"
+        },
+        "hrReports": {
+          "type": "cds.Association",
+          "target": "PLTUserManagement.User",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "manager": {
+          "type": "cds.Association",
+          "target": "PLTUserManagement.User"
+        },
+        "matrixManager": {
+          "type": "cds.Association",
+          "target": "PLTUserManagement.User",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "matrixReports": {
+          "type": "cds.Association",
+          "target": "PLTUserManagement.User",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "proxy": {
+          "type": "cds.Association",
+          "target": "PLTUserManagement.User",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "secondManager": {
+          "type": "cds.Association",
+          "target": "PLTUserManagement.User"
+        },
+        "secondReports": {
+          "type": "cds.Association",
+          "target": "PLTUserManagement.User",
+          "cardinality": {
+            "max": "*"
+          }
+        },
+        "userPermissionsNav": {
+          "type": "cds.Association",
+          "target": "PLTUserManagement.UserPermissions"
+        }
+      }
+    },
+    "PLTUserManagement.UserPermissions": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "userId": {
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "addressLine1": {
+          "type": "cds.Integer"
+        },
+        "addressLine2": {
+          "type": "cds.Integer"
+        },
+        "addressLine3": {
+          "type": "cds.Integer"
+        },
+        "benchStrength": {
+          "type": "cds.Integer"
+        },
+        "benchStrengthNav": {
+          "type": "cds.Integer"
+        },
+        "bonusBudgetAmount": {
+          "type": "cds.Integer"
+        },
+        "bonusTarget": {
+          "type": "cds.Integer"
+        },
+        "businessPhone": {
+          "type": "cds.Integer"
+        },
+        "businessSegment": {
+          "type": "cds.Integer"
+        },
+        "cellPhone": {
+          "type": "cds.Integer"
+        },
+        "citizenship": {
+          "type": "cds.Integer"
+        },
+        "city": {
+          "type": "cds.Integer"
+        },
+        "compensationBonusEligible": {
+          "type": "cds.Integer"
+        },
+        "compensationEligible": {
+          "type": "cds.Integer"
+        },
+        "compensationReadOnly": {
+          "type": "cds.Integer"
+        },
+        "compensationSalaryEligible": {
+          "type": "cds.Integer"
+        },
+        "compensationSalaryRateType": {
+          "type": "cds.Integer"
+        },
+        "compensationSalaryRateUnits": {
+          "type": "cds.Integer"
+        },
+        "compensationStockEligible": {
+          "type": "cds.Integer"
+        },
+        "competency": {
+          "type": "cds.Integer"
+        },
+        "competencyRatingNav": {
+          "type": "cds.Integer"
+        },
+        "country": {
+          "type": "cds.Integer"
+        },
+        "criticalTalentComments": {
+          "type": "cds.Integer"
+        },
+        "custom01": {
+          "type": "cds.Integer"
+        },
+        "custom02": {
+          "type": "cds.Integer"
+        },
+        "custom03": {
+          "type": "cds.Integer"
+        },
+        "custom04": {
+          "type": "cds.Integer"
+        },
+        "custom05": {
+          "type": "cds.Integer"
+        },
+        "custom06": {
+          "type": "cds.Integer"
+        },
+        "custom07": {
+          "type": "cds.Integer"
+        },
+        "custom08": {
+          "type": "cds.Integer"
+        },
+        "custom09": {
+          "type": "cds.Integer"
+        },
+        "custom10": {
+          "type": "cds.Integer"
+        },
+        "custom11": {
+          "type": "cds.Integer"
+        },
+        "custom12": {
+          "type": "cds.Integer"
+        },
+        "custom13": {
+          "type": "cds.Integer"
+        },
+        "custom14": {
+          "type": "cds.Integer"
+        },
+        "custom15": {
+          "type": "cds.Integer"
+        },
+        "customManager": {
+          "type": "cds.Integer"
+        },
+        "customReports": {
+          "type": "cds.Integer"
+        },
+        "dateOfBirth": {
+          "type": "cds.Integer"
+        },
+        "dateOfCurrentPosition": {
+          "type": "cds.Integer"
+        },
+        "dateOfPosition": {
+          "type": "cds.Integer"
+        },
+        "defaultFullName": {
+          "type": "cds.Integer"
+        },
+        "defaultLocale": {
+          "type": "cds.Integer"
+        },
+        "department": {
+          "type": "cds.Integer"
+        },
+        "directReports": {
+          "type": "cds.Integer"
+        },
+        "division": {
+          "type": "cds.Integer"
+        },
+        "dummyNominationNav": {
+          "type": "cds.Integer"
+        },
+        "email": {
+          "type": "cds.Integer"
+        },
+        "empId": {
+          "type": "cds.Integer"
+        },
+        "empInfo": {
+          "type": "cds.Integer"
+        },
+        "employeeClass": {
+          "type": "cds.Integer"
+        },
+        "ethnicity": {
+          "type": "cds.Integer"
+        },
+        "ethnicityNav": {
+          "type": "cds.Integer"
+        },
+        "fax": {
+          "type": "cds.Integer"
+        },
+        "finalJobCode": {
+          "type": "cds.Integer"
+        },
+        "finalJobFamily": {
+          "type": "cds.Integer"
+        },
+        "finalJobRole": {
+          "type": "cds.Integer"
+        },
+        "firstName": {
+          "type": "cds.Integer"
+        },
+        "futureLeader": {
+          "type": "cds.Integer"
+        },
+        "gender": {
+          "type": "cds.Integer"
+        },
+        "hireDate": {
+          "type": "cds.Integer"
+        },
+        "homePhone": {
+          "type": "cds.Integer"
+        },
+        "hr": {
+          "type": "cds.Integer"
+        },
+        "hrReports": {
+          "type": "cds.Integer"
+        },
+        "impactOfLoss": {
+          "type": "cds.Integer"
+        },
+        "impactOfLossComments": {
+          "type": "cds.Integer"
+        },
+        "impactOfLossNav": {
+          "type": "cds.Integer"
+        },
+        "issueComments": {
+          "type": "cds.Integer"
+        },
+        "jobCode": {
+          "type": "cds.Integer"
+        },
+        "jobFamily": {
+          "type": "cds.Integer"
+        },
+        "jobLevel": {
+          "type": "cds.Integer"
+        },
+        "jobRole": {
+          "type": "cds.Integer"
+        },
+        "jobTitle": {
+          "type": "cds.Integer"
+        },
+        "keyPosition": {
+          "type": "cds.Integer"
+        },
+        "lastModified": {
+          "type": "cds.Integer"
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.Integer"
+        },
+        "lastModifiedWithTZ": {
+          "type": "cds.Integer"
+        },
+        "lastName": {
+          "type": "cds.Integer"
+        },
+        "lastReviewDate": {
+          "type": "cds.Integer"
+        },
+        "level": {
+          "type": "cds.Integer"
+        },
+        "localCurrencyCode": {
+          "type": "cds.Integer"
+        },
+        "location": {
+          "type": "cds.Integer"
+        },
+        "lumpsum2Target": {
+          "type": "cds.Integer"
+        },
+        "lumpsumTarget": {
+          "type": "cds.Integer"
+        },
+        "manager": {
+          "type": "cds.Integer"
+        },
+        "married": {
+          "type": "cds.Integer"
+        },
+        "matrix1Label": {
+          "type": "cds.Integer"
+        },
+        "matrix2Label": {
+          "type": "cds.Integer"
+        },
+        "matrixManaged": {
+          "type": "cds.Integer"
+        },
+        "matrixManager": {
+          "type": "cds.Integer"
+        },
+        "matrixReports": {
+          "type": "cds.Integer"
+        },
+        "meritEffectiveDate": {
+          "type": "cds.Integer"
+        },
+        "meritTarget": {
+          "type": "cds.Integer"
+        },
+        "mi": {
+          "type": "cds.Integer"
+        },
+        "minority": {
+          "type": "cds.Integer"
+        },
+        "nationality": {
+          "type": "cds.Integer"
+        },
+        "newToPosition": {
+          "type": "cds.Integer"
+        },
+        "nickname": {
+          "type": "cds.Integer"
+        },
+        "nominationNav": {
+          "type": "cds.Integer"
+        },
+        "objective": {
+          "type": "cds.Integer"
+        },
+        "onboardingId": {
+          "type": "cds.Integer"
+        },
+        "origHireDate": {
+          "type": "cds.Integer"
+        },
+        "password": {
+          "type": "cds.Integer"
+        },
+        "payGrade": {
+          "type": "cds.Integer"
+        },
+        "performance": {
+          "type": "cds.Integer"
+        },
+        "potential": {
+          "type": "cds.Integer"
+        },
+        "promotionAmount": {
+          "type": "cds.Integer"
+        },
+        "proxy": {
+          "type": "cds.Integer"
+        },
+        "raiseProrating": {
+          "type": "cds.Integer"
+        },
+        "reasonForLeaving": {
+          "type": "cds.Integer"
+        },
+        "reasonForLeavingNav": {
+          "type": "cds.Integer"
+        },
+        "reloComments": {
+          "type": "cds.Integer"
+        },
+        "reloLocation": {
+          "type": "cds.Integer"
+        },
+        "reloWilling": {
+          "type": "cds.Integer"
+        },
+        "reloWillingNav": {
+          "type": "cds.Integer"
+        },
+        "reviewFreq": {
+          "type": "cds.Integer"
+        },
+        "riskOfLoss": {
+          "type": "cds.Integer"
+        },
+        "riskOfLossNav": {
+          "type": "cds.Integer"
+        },
+        "salary": {
+          "type": "cds.Integer"
+        },
+        "salaryBudgetExtra2Percentage": {
+          "type": "cds.Integer"
+        },
+        "salaryBudgetExtraPercentage": {
+          "type": "cds.Integer"
+        },
+        "salaryBudgetFinalSalaryPercentage": {
+          "type": "cds.Integer"
+        },
+        "salaryBudgetLumpsumPercentage": {
+          "type": "cds.Integer"
+        },
+        "salaryBudgetMeritPercentage": {
+          "type": "cds.Integer"
+        },
+        "salaryBudgetPromotionPercentage": {
+          "type": "cds.Integer"
+        },
+        "salaryBudgetTotalRaisePercentage": {
+          "type": "cds.Integer"
+        },
+        "salaryLocal": {
+          "type": "cds.Integer"
+        },
+        "salaryProrating": {
+          "type": "cds.Integer"
+        },
+        "salutation": {
+          "type": "cds.Integer"
+        },
+        "salutationNav": {
+          "type": "cds.Integer"
+        },
+        "sciLastModified": {
+          "type": "cds.Integer"
+        },
+        "seatingChart": {
+          "type": "cds.Integer"
+        },
+        "secondManager": {
+          "type": "cds.Integer"
+        },
+        "secondReports": {
+          "type": "cds.Integer"
+        },
+        "serviceDate": {
+          "type": "cds.Integer"
+        },
+        "ssn": {
+          "type": "cds.Integer"
+        },
+        "state": {
+          "type": "cds.Integer"
+        },
+        "status": {
+          "type": "cds.Integer"
+        },
+        "stockBudgetOptionAmount": {
+          "type": "cds.Integer"
+        },
+        "stockBudgetOther1Amount": {
+          "type": "cds.Integer"
+        },
+        "stockBudgetOther2Amount": {
+          "type": "cds.Integer"
+        },
+        "stockBudgetOther3Amount": {
+          "type": "cds.Integer"
+        },
+        "stockBudgetStockAmount": {
+          "type": "cds.Integer"
+        },
+        "stockBudgetUnitAmount": {
+          "type": "cds.Integer"
+        },
+        "suffix": {
+          "type": "cds.Integer"
+        },
+        "sysCostOfSource": {
+          "type": "cds.Integer"
+        },
+        "sysSource": {
+          "type": "cds.Integer"
+        },
+        "sysSourceNav": {
+          "type": "cds.Integer"
+        },
+        "sysStartingSalary": {
+          "type": "cds.Integer"
+        },
+        "timeZone": {
+          "type": "cds.Integer"
+        },
+        "title": {
+          "type": "cds.Integer"
+        },
+        "totalTeamSize": {
+          "type": "cds.Integer"
+        },
+        "userPermissionsNav": {
+          "type": "cds.Integer"
+        },
+        "username": {
+          "type": "cds.Integer"
+        },
+        "veteranDisabled": {
+          "type": "cds.Integer"
+        },
+        "veteranMedal": {
+          "type": "cds.Integer"
+        },
+        "veteranProtected": {
+          "type": "cds.Integer"
+        },
+        "veteranSeparated": {
+          "type": "cds.Integer"
+        },
+        "zipCode": {
+          "type": "cds.Integer"
+        }
+      }
+    }
+  }
+}

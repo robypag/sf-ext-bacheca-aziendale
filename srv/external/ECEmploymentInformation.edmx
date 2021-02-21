@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+	<edmx:DataServices m:DataServiceVersion="2.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+		<Schema Namespace="SFODataSet" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:sap="http://www.sap.com/Protocols/SAPData" xmlns:sf="http://www.successfactors.com/edm/sf">
+			<EntityContainer Name="EntityContainer" m:IsDefaultEntityContainer="true">
+				<EntitySet EntityType="SFOData.EmpEmployment" Name="EmpEmployment" sap:creatable="false" sap:deletable="false" sap:label="Employment Details" sap:updatable="false" sap:upsertable="true">
+					<Documentation>
+						<Summary>EmpEmployment</Summary>
+						<LongDescription>Contains all the employment related information for an employee.</LongDescription>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Employment Information</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<EntitySet EntityType="SFOData.EmpEmploymentTermination" Name="EmpEmploymentTermination" sap:creatable="false" sap:deletable="false" sap:label="Employment Details" sap:updatable="false" sap:upsertable="true">
+					<Documentation>
+						<Summary>EmpEmploymentTermination</Summary>
+						<LongDescription>Contains employment termination information for an employee.</LongDescription>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Employment Information</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<EntitySet EntityType="SFOData.EmpWorkPermit" Name="EmpWorkPermit" sap:creatable="false" sap:deletable="false" sap:label="Work Permit Info" sap:updatable="false" sap:upsertable="true">
+					<Documentation>
+						<Summary>EmpWorkPermit</Summary>
+						<LongDescription>Contains work permit documentation related information for an employee. </LongDescription>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Employment Information</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<EntitySet EntityType="SFOData.EmpJobRelationships" Name="EmpJobRelationships" sap:creatable="false" sap:deletable="false" sap:label="Job Relationships" sap:updatable="false" sap:upsertable="true">
+					<Documentation>
+						<Summary>EmpJobRelationships</Summary>
+						<LongDescription>Contains the employee relationship information to one or more managers.</LongDescription>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Employment Information</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<EntitySet EntityType="SFOData.EmpJob" Name="EmpJob" sap:creatable="false" sap:deletable="false" sap:label="Job Information" sap:updatable="false" sap:upsertable="true">
+					<Documentation>
+						<Summary>EmpJob</Summary>
+						<LongDescription>Contains effective dated job history for an employee such as title, job code, and department. This is useful reading all job changes over a period of time.</LongDescription>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Employment Information</sap:tag>
+							<sap:tag>Recommended</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<EntitySet EntityType="SFOData.PersonEmpTerminationInfo" Name="PersonEmpTerminationInfo" sap:creatable="false" sap:deletable="false" sap:label="PersonEmpTerminationInfo" sap:updatable="false" sap:upsertable="false">
+					<Documentation>
+						<Summary>PersonEmpTermination</Summary>
+						<LongDescription>Contains person latest employment termination date.</LongDescription>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Employment Information</sap:tag>
+							<sap:tag>Results List Not Supported</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<EntitySet EntityType="SFOData.EmpPensionPayout" Name="EmpPensionPayout" sap:creatable="false" sap:deletable="false" sap:label="Pension Payout Details" sap:updatable="false" sap:upsertable="true">
+					<Documentation>
+						<Summary>EmpPensionPayout</Summary>
+						<LongDescription>Contains information how pension is to be paid to an employee.</LongDescription>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Employment Information</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<EntitySet EntityType="SFOData.EmpBeneficiary" Name="EmpBeneficiary" sap:creatable="false" sap:deletable="false" sap:label="Pension Payout Details" sap:updatable="false" sap:upsertable="true">
+					<Documentation>
+						<Summary>EmpBeneficiary</Summary>
+						<LongDescription>Contains a list of pension beneficiaries for an employee.</LongDescription>
+						<sap:tagcollection>
+							<sap:tag>Employee Central (EC)</sap:tag>
+							<sap:tag>EC - Employment Information</sap:tag>
+						</sap:tagcollection>
+					</Documentation>
+				</EntitySet>
+				<AssociationSet Association="SFOData.EmpJobRelationships_Employment_Rel" Name="EmpJobRelationships_Employment_Rel">
+					<End EntitySet="EmpJobRelationships" Role="EmpJobRelationships"/>
+					<End EntitySet="EmpEmployment" Role="EmpEmployment_ref"/>
+				</AssociationSet>
+				<AssociationSet Association="SFOData.EmpWorkPermit_Employment" Name="EmpWorkPermit_Employment">
+					<End EntitySet="EmpWorkPermit" Role="EmpWorkPermit"/>
+					<End EntitySet="EmpEmployment" Role="EmpEmployment_ref"/>
+				</AssociationSet>
+				<AssociationSet Association="SFOData.EmpJob_Employment_Manager" Name="EmpJob_Employment_Manager">
+					<End EntitySet="EmpJob" Role="EmpJob"/>
+					<End EntitySet="EmpEmployment" Role="EmpEmployment_ref"/>
+				</AssociationSet>
+				<AssociationSet Association="SFOData.EmpEmploymentTermination_EmpJob" Name="EmpEmploymentTermination_EmpJob">
+					<End EntitySet="EmpEmploymentTermination" Role="EmpEmploymentTermination"/>
+					<End EntitySet="EmpJob" Role="EmpJob_ref"/>
+				</AssociationSet>
+				<AssociationSet Association="SFOData.EmpEmploymentTermination_Employment" Name="EmpEmploymentTermination_Employment">
+					<End EntitySet="EmpEmploymentTermination" Role="EmpEmploymentTermination"/>
+					<End EntitySet="EmpEmployment" Role="EmpEmployment_ref"/>
+				</AssociationSet>
+				<AssociationSet Association="SFOData.EmpJobRelationships_Employment" Name="EmpJobRelationships_Employment">
+					<End EntitySet="EmpJobRelationships" Role="EmpJobRelationships"/>
+					<End EntitySet="EmpEmployment" Role="EmpEmployment_ref"/>
+				</AssociationSet>
+				<AssociationSet Association="SFOData.EmpJob_Employment" Name="EmpJob_Employment">
+					<End EntitySet="EmpJob" Role="EmpJob"/>
+					<End EntitySet="EmpEmployment" Role="EmpEmployment_ref"/>
+				</AssociationSet>
+				<AssociationSet Association="SFOData.EmpPensionPayout_Employment" Name="EmpPensionPayout_Employment">
+					<End EntitySet="EmpPensionPayout" Role="EmpPensionPayout"/>
+					<End EntitySet="EmpEmployment" Role="EmpEmployment_ref"/>
+				</AssociationSet>
+				<AssociationSet Association="SFOData.EmpBeneficiary_Employment" Name="EmpBeneficiary_Employment">
+					<End EntitySet="EmpBeneficiary" Role="EmpBeneficiary"/>
+					<End EntitySet="EmpEmployment" Role="EmpEmployment_ref"/>
+				</AssociationSet>
+			</EntityContainer>
+		</Schema>
+		<Schema Namespace="SFOData" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:sap="http://www.successfactors.com/edm/sap" xmlns:sf="http://www.successfactors.com/edm/sf">
+			<EntityType Name="EmpEmployment">
+				<Key>
+					<PropertyRef Name="personIdExternal"/>
+					<PropertyRef Name="userId"/>
+				</Key>
+				<Property Name="StockEndDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="Stock End Date" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="128" Name="assignmentClass" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Employment Assignment Type" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="benefitsEligibilityStartDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="Benefits Eligibility Start Date" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="benefitsEndDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="Benefits End Date" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="bonusPayExpirationDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="bonusPayExpirationDate" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="createdBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Created By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Created Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Created On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="eligibleForSalContinuation" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Eligible for Salary Continuation" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="eligibleForStock" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Eligible for Stock" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="employeeFirstEmployment" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Employee's First Employment" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="endDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Termination Date" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="firstDateWorked" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="First Date Worked" sap:required="true" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="includeAllRecords" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="true" sap:label="Include All Records" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="false"/>
+				<Property Name="initialOptionGrant" Nullable="true" Type="Edm.Double" sap:creatable="false" sap:filterable="false" sap:label="Initial Option Grant" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="initialStockGrant" Nullable="true" Type="Edm.Double" sap:creatable="false" sap:filterable="false" sap:label="Initial Stock Grant" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="isContingentWorker" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="true" sap:label="Contingent Worker" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="isECRecord" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="true" sap:label="isECRecord" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="jobNumber" Nullable="true" Type="Edm.Int64" sap:creatable="false" sap:filterable="true" sap:label="Employment Id" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="false"/>
+				<Property Name="lastDateWorked" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="Last Date Worked" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="lastModifiedBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Last Modified By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Last Modified Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Last Modified On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="okToRehire" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="OK to Rehire" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="originalStartDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="Original Start Date" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="payrollEndDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="Payroll End Date" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="personIdExternal" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Person ID External" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="256" Name="prevEmployeeId" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="Previous Employment ID" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="professionalServiceDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Professional Service Date" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="regretTermination" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Regret Termination" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="salaryEndDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="Salary End Date" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="seniorityDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="Seniority Start Date" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="serviceDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Service Date" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="startDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Hire Date" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="100" Name="userId" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="User ID" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<NavigationProperty FromRole="EmpEmployment_ref" Name="empJobRelationshipNav" Relationship="SFOData.EmpJobRelationships_Employment" ToRole="EmpJobRelationships" sap:creatable="false" sap:filterable="true" sap:label="User ID" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<NavigationProperty FromRole="EmpEmployment_ref" Name="empWorkPermitNav" Relationship="SFOData.EmpWorkPermit_Employment" ToRole="EmpWorkPermit" sap:creatable="false" sap:filterable="true" sap:label="User ID" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<NavigationProperty FromRole="EmpEmployment_ref" Name="jobInfoNav" Relationship="SFOData.EmpJob_Employment" ToRole="EmpJob" sap:creatable="false" sap:filterable="true" sap:label="User ID" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<NavigationProperty FromRole="EmpEmployment_ref" Name="empPensionPayoutNav" Relationship="SFOData.EmpPensionPayout_Employment" ToRole="EmpPensionPayout" sap:creatable="false" sap:filterable="true" sap:label="User ID" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<NavigationProperty FromRole="EmpEmployment_ref" Name="empBeneficiaryNav" Relationship="SFOData.EmpBeneficiary_Employment" ToRole="EmpBeneficiary" sap:creatable="false" sap:filterable="true" sap:label="User ID" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</EntityType>
+			<EntityType Name="EmpEmploymentTermination">
+				<Key>
+					<PropertyRef Name="endDate"/>
+					<PropertyRef Name="personIdExternal"/>
+					<PropertyRef Name="userId"/>
+				</Key>
+				<Property Name="StockEndDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="Stock End Date" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="attachmentId" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="attachmentId" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="false"/>
+				<Property Name="benefitsEndDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="Benefits End Date" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="bonusPayExpirationDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="bonusPayExpirationDate" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="100" Name="createdBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Created By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Created Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Created On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="eligibleForSalContinuation" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Eligible for Salary Continuation" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="endDate" Nullable="false" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Termination Date" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="eventReason" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="Event Reason" sap:required="true" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="false"/>
+				<Property Name="lastDateWorked" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="Last Date Worked" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="100" Name="lastModifiedBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Last Modified By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Last Modified Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Last Modified On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="newMainEmploymentId" Nullable="true" Type="Edm.Decimal" sap:creatable="false" sap:filterable="false" sap:label="newMainEmploymentId" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="false"/>
+				<Property MaxLength="4000" Name="notes" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="Notes" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="okToRehire" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="OK to Rehire" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="payrollEndDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="Payroll End Date" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="100" Name="personIdExternal" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Person ID External" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="regretTermination" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Regret Termination" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="salaryEndDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="Salary End Date" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="100" Name="userId" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="User ID" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<NavigationProperty FromRole="EmpEmploymentTermination" Name="employmentNav" Relationship="SFOData.EmpEmploymentTermination_Employment" ToRole="EmpEmployment_ref" sap:creatable="false" sap:filterable="true" sap:label="User ID" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<NavigationProperty FromRole="EmpEmploymentTermination" Name="jobInfoNav" Relationship="SFOData.EmpEmploymentTermination_EmpJob" ToRole="EmpJob_ref" sap:creatable="false" sap:filterable="true" sap:label="User ID" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</EntityType>
+			<EntityType Name="EmpWorkPermit">
+				<Key>
+					<PropertyRef Name="country"/>
+					<PropertyRef Name="documentNumber"/>
+					<PropertyRef Name="documentType"/>
+					<PropertyRef Name="userId"/>
+				</Key>
+				<Property Name="attachment" Nullable="true" Type="Edm.Binary" sap:creatable="false" sap:filterable="false" sap:label="Attachment Content" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="256" Name="attachmentFileName" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="Attachment File Name" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="attachmentFileSize" Nullable="true" Type="Edm.Decimal" sap:creatable="false" sap:filterable="false" sap:label="Attachment File Size" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="5" Name="attachmentFileType" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="Attachment File Type" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="attachmentId" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="attachmentId" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="256" Name="attachmentMimeType" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="Attachment Mime Type" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="attachmentStatus" Nullable="true" Type="Edm.Decimal" sap:creatable="false" sap:filterable="false" sap:label="Attachment Status" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="256" Name="country" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Country" sap:picklist="ISOCountryList" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="100" Name="createdBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Created By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Created Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Created On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="256" Name="documentNumber" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Document Number" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="256" Name="documentTitle" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="Document Title" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="256" Name="documentType" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Document Type" sap:picklist="permitdoctype" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="expirationDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="Expiration Date" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="isValidated" Nullable="true" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Validated" sap:required="true" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="issueDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="false" sap:label="Issue Date" sap:required="true" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="256" Name="issuePlace" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="Issue Place" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="256" Name="issuingAuthority" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="Issuing Authority" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="100" Name="lastModifiedBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Last Modified By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Last Modified Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Last Modified On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="4000" Name="notes" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="notes" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="100" Name="userId" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="User ID" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<NavigationProperty FromRole="EmpWorkPermit" Name="employmentNav" Relationship="SFOData.EmpWorkPermit_Employment" ToRole="EmpEmployment_ref" sap:creatable="false" sap:filterable="true" sap:label="User ID" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</EntityType>
+			<EntityType Name="EmpJobRelationships">
+				<Key>
+					<PropertyRef Name="relationshipType"/>
+					<PropertyRef Name="startDate"/>
+					<PropertyRef Name="userId"/>
+				</Key>
+				<Property MaxLength="100" Name="createdBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Created By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Created Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Created On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="endDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="End Date" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="100" Name="lastModifiedBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Last Modified By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Last Modified Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Last Modified On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="operation" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="operation" sap:required="false" sap:sortable="false" sap:updatable="false" sap:upsertable="true" sap:visible="false"/>
+				<Property MaxLength="384" Name="relUserId" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Name" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="100" Name="relationshipType" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Relationship Type" sap:picklist="jobRelType" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="startDate" Nullable="false" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Start Date" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="100" Name="userId" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="User ID" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<NavigationProperty FromRole="EmpJobRelationships" Name="employmentNav" Relationship="SFOData.EmpJobRelationships_Employment" ToRole="EmpEmployment_ref" sap:creatable="false" sap:filterable="true" sap:label="User ID" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<NavigationProperty FromRole="EmpJobRelationships" Name="relEmploymentNav" Relationship="SFOData.EmpJobRelationships_Employment_Rel" ToRole="EmpEmployment_ref" sap:creatable="false" sap:filterable="true" sap:label="Name" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</EntityType>
+			<EntityType Name="EmpJob">
+				<Key>
+					<PropertyRef Name="seqNumber"></PropertyRef>
+					<PropertyRef Name="startDate"></PropertyRef>
+					<PropertyRef Name="userId"></PropertyRef>
+				</Key>
+				<Property Name="businessUnit" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="32" sap:label="Business Unit"></Property>
+				<Property Name="company" Type="Edm.String" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="32" sap:label="Company"></Property>
+				<Property Name="companyEntryDate" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Company Entry Date"></Property>
+				<Property Name="contractEndDate" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Contract End Date"></Property>
+				<Property Name="contractType" Type="Edm.String" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:picklist="contractType" sap:label="Tipo contratto"></Property>
+				<Property Name="costCenter" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="32" sap:label="Cost Center"></Property>
+				<Property Name="countryOfCompany" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:picklist="ISOCountryList" sap:label="Country"></Property>
+				<Property Name="createdBy" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="100" sap:label="Created By"></Property>
+				<Property Name="createdDateTime" Type="Edm.DateTimeOffset" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:label="Created Date Time"></Property>
+				<Property Name="createdOn" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:display-format="Date" sap:label="Created On"></Property>
+				<Property Name="customDate1" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Scadenza Part time"></Property>
+				<Property Name="customDate10" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Data richiesta trasferimento"></Property>
+				<Property Name="customDate11" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Data fine trasferta"></Property>
+				<Property Name="customDate12" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Data nomina Dirigente"></Property>
+				<Property Name="customDate13" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Data inizio distacco"></Property>
+				<Property Name="customDate14" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Data fine distacco"></Property>
+				<Property Name="customDate15" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Data inizio distacco parziale"></Property>
+				<Property Name="customDate16" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Data fine distacco parziale"></Property>
+				<Property Name="customDate17" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Data inizio Contratto"></Property>
+				<Property Name="customDate2" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Data assegnazione Inquadramento"></Property>
+				<Property Name="customDate3" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Data cambio Qualifica"></Property>
+				<Property Name="customDate4" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Data inizio contratto Apprendistato"></Property>
+				<Property Name="customDate5" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Data fine contratto Apprendistato"></Property>
+				<Property Name="customDate6" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Data fine presunta distacco a termine"></Property>
+				<Property Name="customDate7" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Data assegnazione Tipo impiego"></Property>
+				<Property Name="customDate8" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="IT150"></Property>
+				<Property Name="customString10" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Dipendenza"></Property>
+				<Property Name="customString11" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Famiglia Professionale"></Property>
+				<Property Name="customString12" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Area Professionale"></Property>
+				<Property Name="customString13" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Dominio LMS"></Property>
+				<Property Name="customString14" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="10" sap:label="Matricola di servizio"></Property>
+				<Property Name="customString15" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="32" sap:label="Società di Appartenenza"></Property>
+				<Property Name="customString16" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="32" sap:label="Centro di Costo Appartenenza"></Property>
+				<Property Name="customString17" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Sede di Appartenenza"></Property>
+				<Property Name="customString18" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="CAP Sede di Appartenenza"></Property>
+				<Property Name="customString19" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Comune Sede di Appartenenza"></Property>
+				<Property Name="customString20" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Indirizzo Sede di Appartenenza"></Property>
+				<Property Name="customString21" Type="Edm.String" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:picklist="tipoRapporto" sap:label="Tipo Rapporto"></Property>
+				<Property Name="customString22" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="10" sap:label="Matricola di Ruolo"></Property>
+				<Property Name="customString23" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Tutor"></Property>
+				<Property Name="customString25" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Società Storica"></Property>
+				<Property Name="customString26" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Posizione INAIL"></Property>
+				<Property Name="customString27" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Posizione Storica"></Property>
+				<Property Name="customString28" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Unità Storica"></Property>
+				<Property Name="customString29" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="% Distacco parziale"></Property>
+				<Property Name="customString3" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:picklist="fte" sap:label="Percentuale di part time"></Property>
+				<Property Name="customString30" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:picklist="ITG_LegalEntity" sap:label="Società di distacco parziale"></Property>
+				<Property Name="customString31" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:picklist="ITG_CostCenter" sap:label="Cdc Società di distacco parziale"></Property>
+				<Property Name="customString32" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Ultima foglia allocazione"></Property>
+				<Property Name="customString33" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Job Role LMS"></Property>
+				<Property Name="customString34" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Ubicazione storica"></Property>
+				<Property Name="customString35" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Cdc storico"></Property>
+				<Property Name="customString36" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Tipo dipendente storico"></Property>
+				<Property Name="customString37" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Status Payroll storico"></Property>
+				<Property Name="customString38" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Tipo contratto storico"></Property>
+				<Property Name="customString39" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Qualifica storica"></Property>
+				<Property Name="customString4" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:picklist="typePT" sap:label="Tipo part time"></Property>
+				<Property Name="customString40" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Livello storico"></Property>
+				<Property Name="customString41" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:picklist="ITG_TalentInfo" sap:label="Talent Info"></Property>
+				<Property Name="customString42" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Responsabile"></Property>
+				<Property Name="customString43" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Position grade"></Property>
+				<Property Name="customString44" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:picklist="yesNo" sap:label="DIR's"></Property>
+				<Property Name="customString45" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:picklist="ITG_SocietàExG" sap:label="Società Extra Gruppo"></Property>
+				<Property Name="customString46" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:picklist="ITG_Gestore_Indipendente" sap:label="Gestore Indipendente"></Property>
+				<Property Name="customString47" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:picklist="yesNo" sap:label="Flag Benefit Auto"></Property>
+				<Property Name="customString6" Type="Edm.String" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:picklist="statusPay" sap:label="Status  Payroll"></Property>
+				<Property Name="customString8" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:picklist="coordTerritoriale" sap:label="Unità di coordinamento territoriale"></Property>
+				<Property Name="customString9" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:label="Provincia lavoro"></Property>
+				<Property Name="department" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="32" sap:label="Department"></Property>
+				<Property Name="departmentEntryDate" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Department Entry Date"></Property>
+				<Property Name="division" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="32" sap:label="Division"></Property>
+				<Property Name="emplStatus" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="32" sap:picklist="employee-status" sap:label="Employee Status"></Property>
+				<Property Name="employeeClass" Type="Edm.String" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="256" sap:picklist="EMPLOYEECLASS" sap:label="Employee Class"></Property>
+				<Property Name="employmentType" Type="Edm.String" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="32" sap:picklist="employmentType" sap:label="Employment Type"></Property>
+				<Property Name="endDate" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:display-format="Date" sap:label="End Date"></Property>
+				<Property Name="event" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="32" sap:picklist="event" sap:label="Event"></Property>
+				<Property Name="eventReason" Type="Edm.String" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:label="Event Reason"></Property>
+				<Property Name="expectedReturnDate" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="expectedReturnDate"></Property>
+				<Property Name="fte" Type="Edm.Double" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:label="FTE"></Property>
+				<Property Name="hireDate" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Hire Date"></Property>
+				<Property Name="isFulltimeEmployee" Type="Edm.Boolean" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:label="Is Fulltime Employee"></Property>
+				<Property Name="jobCode" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="32" sap:label="Job Classification"></Property>
+				<Property Name="jobEntryDate" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Job Entry Date"></Property>
+				<Property Name="jobTitle" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="256" sap:label="Job Title"></Property>
+				<Property Name="lastModifiedBy" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="100" sap:label="Last Modified By"></Property>
+				<Property Name="lastModifiedDateTime" Type="Edm.DateTimeOffset" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:label="Last Modified Date Time"></Property>
+				<Property Name="lastModifiedOn" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:display-format="Date" sap:label="Last Modified On"></Property>
+				<Property Name="location" Type="Edm.String" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="128" sap:label="Location"></Property>
+				<Property Name="locationEntryDate" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Location Entry Date"></Property>
+				<Property Name="managerId" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="256" sap:label="Supervisor"></Property>
+				<Property Name="notes" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="4" sap:label="Attività apprendista"></Property>
+				<Property Name="operation" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="false" sap:sortable="false" sap:filterable="false" sap:label="operation"></Property>
+				<Property Name="payScaleArea" Type="Edm.String" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="128" sap:label="Pay Scale Area"></Property>
+				<Property Name="payScaleGroup" Type="Edm.String" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="128" sap:label="Pay Scale Group"></Property>
+				<Property Name="payScaleLevel" Type="Edm.String" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="128" sap:label="Pay Scale Level"></Property>
+				<Property Name="payScaleLevelEntryDate" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Pay Scale Level Entry Date"></Property>
+				<Property Name="payScaleType" Type="Edm.String" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="128" sap:label="Pay Scale Type"></Property>
+				<Property Name="position" Type="Edm.String" Nullable="true" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="128" sap:label="Position"></Property>
+				<Property Name="positionEntryDate" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Position Entry Date"></Property>
+				<Property Name="probationPeriodEndDate" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Probationary Period End Date"></Property>
+				<Property Name="seqNumber" Type="Edm.Int64" Nullable="false" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:label="Sequence Number"></Property>
+				<Property Name="startDate" Type="Edm.DateTime" Nullable="false" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" sap:display-format="Date" sap:label="Start Date"></Property>
+				<Property Name="terminationDate" Type="Edm.DateTime" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" sap:display-format="Date" sap:label="Termination Date"></Property>
+				<Property Name="timezone" Type="Edm.String" Nullable="true" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="false" sap:filterable="true" MaxLength="128" sap:label="Timezone"></Property>
+				<Property Name="userId" Type="Edm.String" Nullable="false" sap:required="true" sap:creatable="false" sap:updatable="false" sap:upsertable="true" sap:visible="true" sap:sortable="true" sap:filterable="true" MaxLength="100" sap:label="User ID"></Property>
+				<NavigationProperty Name="employmentNav" sap:required="false" sap:creatable="false" sap:updatable="false" sap:upsertable="false" sap:visible="true" sap:sortable="true" sap:filterable="true" Relationship="SFOData.EmpJob_Employment" FromRole="EmpJob" ToRole="EmpEmployment_ref" sap:label="User ID"></NavigationProperty>
+			</EntityType>		
+			<EntityType Name="PersonEmpTerminationInfo">
+				<Key>
+					<PropertyRef Name="personIdExternal"/>
+				</Key>
+				<Property Name="activeEmploymentsCount" Nullable="true" Type="Edm.Int32" sap:creatable="false" sap:filterable="true" sap:label="Active Employments Count" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="latestTerminationDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Latest Termination Date" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="personIdExternal" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Person ID External" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</EntityType>
+			<EntityType Name="EmpPensionPayout">
+				<Key>
+					<PropertyRef Name="userId"/>
+				</Key>
+				<Property MaxLength="100" Name="createdBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Created By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Created Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Created On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="endDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Actual End Date" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="lastModifiedBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Last Modified By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Last Modified Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Last Modified On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="payrollEndDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Payroll End Date" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="personIdExternal" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Person ID External" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="plannedEndDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="End Date" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="startDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Start Date" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="100" Name="userId" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="User ID" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<NavigationProperty FromRole="EmpPensionPayout" Name="employmentNav" Relationship="SFOData.EmpPensionPayout_Employment" ToRole="EmpEmployment_ref" sap:creatable="false" sap:filterable="true" sap:label="User ID" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</EntityType>
+			<EntityType Name="EmpBeneficiary">
+				<Key>
+					<PropertyRef Name="userId"/>
+				</Key>
+				<Property MaxLength="100" Name="createdBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Created By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Created Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="createdOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Created On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="endDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Actual End Date" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="lastModifiedBy" Nullable="true" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Last Modified By" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedDateTime" Nullable="true" Type="Edm.DateTimeOffset" sap:creatable="false" sap:filterable="true" sap:label="Last Modified Date Time" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="lastModifiedOn" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Last Modified On" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property Name="payrollEndDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Payroll End Date" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+				<Property MaxLength="100" Name="personIdExternal" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="Person ID External" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="plannedEndDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="End Date" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property Name="startDate" Nullable="true" Type="Edm.DateTime" sap:creatable="false" sap:display-format="Date" sap:filterable="true" sap:label="Start Date" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<Property MaxLength="100" Name="userId" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="true" sap:label="User ID" sap:required="true" sap:sortable="true" sap:updatable="false" sap:upsertable="true" sap:visible="true"/>
+				<NavigationProperty FromRole="EmpBeneficiary" Name="employmentNav" Relationship="SFOData.EmpBeneficiary_Employment" ToRole="EmpEmployment_ref" sap:creatable="false" sap:filterable="true" sap:label="User ID" sap:required="false" sap:sortable="true" sap:updatable="false" sap:upsertable="false" sap:visible="true"/>
+			</EntityType>
+			<Association Name="EmpJobRelationships_Employment_Rel">
+				<End Multiplicity="*" Role="EmpJobRelationships" Type="SFOData.EmpJobRelationships"/>
+				<End Multiplicity="0..1" Role="EmpEmployment_ref" Type="SFOData.EmpEmployment"/>
+			</Association>
+			<Association Name="EmpWorkPermit_Employment">
+				<End Multiplicity="*" Role="EmpWorkPermit" Type="SFOData.EmpWorkPermit"/>
+				<End Multiplicity="0..1" Role="EmpEmployment_ref" Type="SFOData.EmpEmployment"/>
+			</Association>
+			<Association Name="EmpJob_Employment_Manager">
+				<End Multiplicity="*" Role="EmpJob" Type="SFOData.EmpJob"/>
+				<End Multiplicity="0..1" Role="EmpEmployment_ref" Type="SFOData.EmpEmployment"/>
+			</Association>
+			<Association Name="EmpEmploymentTermination_EmpJob">
+				<End Multiplicity="1" Role="EmpEmploymentTermination" Type="SFOData.EmpEmploymentTermination"/>
+				<End Multiplicity="1" Role="EmpJob_ref" Type="SFOData.EmpJob"/>
+			</Association>
+			<Association Name="EmpEmploymentTermination_Employment">
+				<End Multiplicity="*" Role="EmpEmploymentTermination" Type="SFOData.EmpEmploymentTermination"/>
+				<End Multiplicity="0..1" Role="EmpEmployment_ref" Type="SFOData.EmpEmployment"/>
+			</Association>
+			<Association Name="EmpJobRelationships_Employment">
+				<End Multiplicity="*" Role="EmpJobRelationships" Type="SFOData.EmpJobRelationships"/>
+				<End Multiplicity="0..1" Role="EmpEmployment_ref" Type="SFOData.EmpEmployment"/>
+			</Association>
+			<Association Name="EmpJob_Employment">
+				<End Multiplicity="*" Role="EmpJob" Type="SFOData.EmpJob"/>
+				<End Multiplicity="0..1" Role="EmpEmployment_ref" Type="SFOData.EmpEmployment"/>
+			</Association>
+			<Association Name="EmpPensionPayout_Employment">
+				<End Multiplicity="0..1" Role="EmpPensionPayout" Type="SFOData.EmpPensionPayout"/>
+				<End Multiplicity="1" Role="EmpEmployment_ref" Type="SFOData.EmpEmployment"/>
+			</Association>
+			<Association Name="EmpBeneficiary_Employment">
+				<End Multiplicity="0..1" Role="EmpBeneficiary" Type="SFOData.EmpBeneficiary"/>
+				<End Multiplicity="1" Role="EmpEmployment_ref" Type="SFOData.EmpEmployment"/>
+			</Association>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

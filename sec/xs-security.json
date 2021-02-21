@@ -1,0 +1,19 @@
+{
+  "xsappname": "sf-ext-bacheca-aziendale",
+  "tenant-mode": "dedicated",
+  "scopes": [{
+    "name": "$XSAPPNAME.admin-user",
+    "description": "Administrator user, provides full application access"
+  }],
+  "attributes": [{
+    "name": "Area",
+    "description": "Geographical Area of which the user is an Administrator",
+    "valueType": "string"
+  }],
+  "role-templates": [{
+    "name": "AreaAdministrator",
+    "description": "Manage Pubblications for the associated Area",
+    "scope-references": ["$XSAPPNAME.admin-user"],
+    "attribute-references": ["Area"]
+  }]
+}
