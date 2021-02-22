@@ -18,7 +18,7 @@ namespace sf.ext.bachecaziendale;
     Label     : '{i18n>pubblicationList}'
 }
 entity Pubblication : cuid, managed {
-    title       : String(120);
+    title       : String(100);
     description : String(1000);
     criticality : Integer enum {
         Important   = 1; // Red

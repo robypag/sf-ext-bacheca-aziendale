@@ -23,6 +23,7 @@ service PubblicationService @(
     }
 
     // Project external entities:
+
     @cds.persistence.skip
     entity SFUserInfo     as projection on UserInfo.SFUser;
 
