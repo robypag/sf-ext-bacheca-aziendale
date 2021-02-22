@@ -21,10 +21,10 @@ entity Pubblication : cuid, managed {
     title       : String(120);
     description : String(1000);
     criticality : Integer enum {
-        Important   = 1;
-        Medium      = 2;
-        Advice      = 3;
-        Informative = 0;
+        Important   = 1; // Red
+        Medium      = 2; // Yellow
+        Advice      = 3; // Green
+        Informative = 0; // Grey / Blue
     };
     notifyUsers : Boolean;
     area        : Association to Area;
