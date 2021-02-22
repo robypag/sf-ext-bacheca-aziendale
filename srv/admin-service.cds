@@ -33,8 +33,5 @@ service AdminService @(
 
     entity LocationGroups as projection on db.LocationGroup;
     entity Locations      as projection on db.Location;
-    // Functions to enable SF Data Replication:
-    function createLocation(location : Locations) returns String;
-    function createGroup(locationGroup : LocationGroups) returns String;
 
 }

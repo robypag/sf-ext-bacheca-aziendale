@@ -28,7 +28,7 @@ entity Pubblication : cuid, managed {
     };
     notifyUsers : Boolean;
     area        : Association to Area;
-    attachment  : Association to many Attachment
+    attachment  : Composition of many Attachment
                       on attachment.pubblication = $self;
 }
 
