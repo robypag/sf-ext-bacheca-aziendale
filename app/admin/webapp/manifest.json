@@ -15,15 +15,7 @@
                 "type": "OData",
                 "settings": {
                     "annotations": ["annotation"],
-                    "odataVersion": "4.0",
-                    "localUri": "localService/metadata.xml"
-                }
-            },
-            "annotation": {
-                "type": "ODataAnnotation",
-                "uri": "annotations/annotation.xml",
-                "settings": {
-                    "localUri": "annotations/annotation.xml"
+                    "odataVersion": "4.0"
                 }
             }
         },
@@ -69,37 +61,34 @@
             },
             "": {
                 "dataSource": "mainService",
-                "preload": true,
                 "settings": {
                     "synchronizationMode": "None",
                     "operationMode": "Server",
                     "autoExpandSelect": true,
-                    "earlyRequests": true
+                    "earlyRequests": true,
+                    "groupProperties": {
+                        "default": {
+                            "submit": "Auto"
+                        }
+                    }
                 }
             }
         },
-        "rootView": {
-            "viewName": "sap.fe.templates.RootContainer.view.Fcl",
-            "type": "XML",
-            "async": true,
-            "id": "appRootView"
-        },
         "routing": {
-            "config": {
-                "routerClass": "sap.f.routing.Router",
-                "flexibleColumnLayout": {
-                    "defaultTwoColumnLayoutType": "TwoColumnsMidExpanded"
-                }
-            },
             "routes": [{
                     "pattern": ":?query:",
                     "name": "PubblicationList",
-                    "target": ["PubblicationList"]
+                    "target": "PubblicationList"
                 },
                 {
-                    "pattern": "Pubblication({key}):?query:",
-                    "name": "PubblicationObjectPage",
-                    "target": ["PubblicationObjectPage"]
+                    "pattern": "Pubblications({key}):?query:",
+                    "name": "PubblicationDetails",
+                    "target": "PubblicationDetails"
+                },
+                {
+                    "pattern": "Pubblications({key}/attachment({key2}):?query:",
+                    "name": "AttachmentDetails",
+                    "target": "AttachmentDetails"
                 }
             ],
             "targets": {
@@ -107,37 +96,43 @@
                     "type": "Component",
                     "id": "PubblicationList",
                     "name": "sap.fe.templates.ListReport",
-                    "controlAggregation": "beginColumnPages",
-                    "contextPattern": "",
                     "options": {
                         "settings": {
                             "entitySet": "Pubblications",
-                            "variantManagement": "Page",
-                            "filterSettings": {
-                                "dateSettings": {
-                                    "useDateRange": true
-                                }
-                            },
                             "navigation": {
-                                "Pubblication": {
+                                "Pubblications": {
                                     "detail": {
-                                        "route": "PubblicationObjectPage"
+                                        "route": "PubblicationDetails"
                                     }
                                 }
                             }
                         }
                     }
                 },
-                "PubblicationObjectPage": {
+                "PubblicationDetails": {
                     "type": "Component",
-                    "id": "PubblicationObjectPage",
+                    "id": "PubblicationDetails",
                     "name": "sap.fe.templates.ObjectPage",
-                    "controlAggregation": "midColumnPages",
-                    "defaultLayoutType": "TwoColumnsMidExpanded",
-                    "contextPattern": "/Pubblication({key})",
                     "options": {
                         "settings": {
-                            "entitySet": "Pubblications"
+                            "entitySet": "Pubblications",
+                            "navigation": {
+                                "Attachments": {
+                                    "detail": {
+                                        "route": "AttachmentDetails"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "AttachmentDetails": {
+                    "type": "Component",
+                    "id": "AttachmentDetails",
+                    "name": "sap.fe.templates.ObjectPage",
+                    "options": {
+                        "settings": {
+                            "entitySet": "Attachments"
                         }
                     }
                 }

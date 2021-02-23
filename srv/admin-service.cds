@@ -6,24 +6,26 @@ service AdminService @(
     requires : 'admin-user'
 ) {
 
-    @odata.draft.enabled
     @Capabilities : {
         Insertable : true,
         Updatable  : true,
         Deletable  : true
     }
-    entity Pubblications @(restrict : [{
-        grant : [
-            'READ',
-            'WRITE'
-        ],
-        to    : 'admin-user',
-        where : 'area_id = $user.Area'
-    }])                   as projection on db.Pubblication {
-        * , area.name as areaName
-    };
+    entity Pubblications @(restrict : [
+        {
+            grant : ['READ', ],
+            to    : 'admin-user',
+        //where : 'area_id = $user.Area'
+        },
+        {
+            grant : ['WRITE'],
+            to    : 'admin-user'
+        }
+    ])                    as projection on db.Pubblication;
 
-    entity Attachments    as projection on db.Attachment;
+    entity Attachments    as projection on db.Attachment {
+        * , null as attachmentUrl : String
+    }
 
     entity Areas @(restrict : [{
         grant : ['READ'],
@@ -31,7 +33,10 @@ service AdminService @(
         where : 'id = $user.Area'
     }])                   as projection on db.Area;
 
+    @cds.autoexpose
     entity LocationGroups as projection on db.LocationGroup;
+
+    @cds.autoexpose
     entity Locations      as projection on db.Location;
 
 }

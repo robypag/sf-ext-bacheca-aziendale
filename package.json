@@ -28,8 +28,8 @@
             "roles": [
               "admin-user"
             ],
-            "user-attributes": {
-              "Area": "National"
+            "userAttributes": {
+              "Area": "1A"
             }
           },
           "PLGGMR78D09F205Q": {
@@ -65,6 +65,24 @@
       "PLTUserManagement": {
         "kind": "odata",
         "model": "srv/external/PLTUserManagement",
+        "credentials": {
+          "url": "https://api2.successfactors.eu/",
+          "path": "/odata/v2",
+          "requestTimeout": 18000000,
+          "username": "SFAPI@italgasretD",
+          "password": "password"
+        }
+      },
+      "db": {
+        "kind": "sql",
+        "model": "*",
+        "credentials": {
+          "database": "data.db"
+        }
+      },
+      "PLTTodo": {
+        "kind": "odata",
+        "model": "srv/external/PLTTodo",
         "credentials": {
           "url": "https://api2.successfactors.eu/",
           "path": "/odata/v2",

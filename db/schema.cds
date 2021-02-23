@@ -1,23 +1,31 @@
 using {
     managed,
-    cuid
+    cuid,
+    sap.common.CodeList as CodeList
 } from '@sap/cds/common';
 
 namespace sf.ext.bachecaziendale;
+
+entity PubblicationType : CodeList {
+    key code : String(10);
+}
+
+type Category : Association to PubblicationType;
 
 /**
  * List of Pubblications, handled by Administrator users,
  * browsed by Employees
  */
 @Common : {
-    ChangedAt : modifiedAt,
-    ChangedBy : modifiedBy,
-    CreatedAt : createdAt,
-    CreatedBy : createdBy,
-    Heading   : '{i18n>pubblicationList}',
-    Label     : '{i18n>pubblicationList}'
+    ChangedAt   : modifiedAt,
+    ChangedBy   : modifiedBy,
+    CreatedAt   : createdAt,
+    CreatedBy   : createdBy,
+    Heading     : '{i18n>pubblicationList}',
+    Label       : '{i18n>pubblicationList}',
+    SemanticKey : [ID]
 }
-entity Pubblication : cuid, managed {
+entity Pubblication : managed, cuid {
     title       : String(100);
     description : String(1000);
     criticality : Integer enum {
@@ -26,8 +34,9 @@ entity Pubblication : cuid, managed {
         Advice      = 3; // Green
         Informative = 0; // Grey / Blue
     };
+    type        : Category;
     notifyUsers : Boolean;
-    area        : Association to Area;
+    area        : Association to one Area;
     attachment  : Composition of many Attachment
                       on attachment.pubblication = $self;
 }
@@ -44,6 +53,7 @@ entity Pubblication : cuid, managed {
     Heading   : '{i18n>areaList}',
     Label     : '{i18n>areaList}'
 }
+
 entity Area : managed {
     key id            : String(20);
         name          : String(100);

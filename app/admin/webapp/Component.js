@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 sap.ui.define(["sap/fe/core/AppComponent"], function (AppComponent) {
     "use strict";
 

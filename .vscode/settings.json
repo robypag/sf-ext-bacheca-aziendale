@@ -7,5 +7,14 @@
   "files.watcherExclude": {
     "**/node_modules/**": false,
     "**/node_modules/[!@]*/**/*": true
-  }
+  },
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "LOCALDB",
+      "group": "CAP",
+      "database": "${workspaceFolder:sf-ext-bacheca-aziendale}/data.db"
+    }
+  ]
 }

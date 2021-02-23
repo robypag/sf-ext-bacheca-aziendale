@@ -1,0 +1,71 @@
+{
+  "definitions": {
+    "PLTTodo": {
+      "kind": "service"
+    },
+    "PLTTodo.Todo": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "categoryId": {
+          "key": true,
+          "type": "cds.LargeString"
+        },
+        "categoryLabel": {
+          "type": "cds.LargeString"
+        },
+        "displayOrder": {
+          "type": "cds.Integer"
+        },
+        "status": {
+          "type": "cds.Integer"
+        }
+      }
+    },
+    "PLTTodo.TodoEntryV2": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "todoEntryId": {
+          "key": true,
+          "type": "cds.DecimalFloat"
+        },
+        "categoryId": {
+          "type": "cds.LargeString"
+        },
+        "categoryLabel": {
+          "type": "cds.LargeString"
+        },
+        "completedDateTime": {
+          "type": "cds.Timestamp"
+        },
+        "createdDate": {
+          "type": "cds.Timestamp"
+        },
+        "dueDate": {
+          "type": "cds.Timestamp"
+        },
+        "formDataId": {
+          "type": "cds.Integer"
+        },
+        "lastModifiedDateTime": {
+          "type": "cds.Timestamp"
+        },
+        "linkUrl": {
+          "type": "cds.String",
+          "length": 2000
+        },
+        "status": {
+          "type": "cds.Integer"
+        },
+        "subjectId": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "todoEntryName": {
+          "type": "cds.LargeString"
+        }
+      }
+    }
+  }
+}
