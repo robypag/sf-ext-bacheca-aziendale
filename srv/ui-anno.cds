@@ -23,18 +23,11 @@ annotate AdminService.Pubblications with @(
                 Value : description,
             },
         },
-        HeaderFacets                    : [
-            {
-                $Type  : 'UI.ReferenceFacet',
-                Target : '@UI.FieldGroup#AdminInfo',
-                Label  : '{i18n>administrativeInfo}'
-            },
-            {
-                $Type  : 'UI.ReferenceFacet',
-                Target : '@UI.FieldGroup#PubblicationDetails',
-                Label  : '{i18n>pubblicationDetails}'
-            }
-        ],
+        HeaderFacets                    : [{
+            $Type  : 'UI.ReferenceFacet',
+            Target : '@UI.FieldGroup#AdminInfo',
+            Label  : '{i18n>administrativeInfo}'
+        }, ],
         FieldGroup #AdminInfo           : {
             $Type : 'UI.FieldGroupType',
             Data  : [
@@ -68,11 +61,18 @@ annotate AdminService.Pubblications with @(
                 },
             ],
         },
-        Facets                          : [{
-            $Type  : 'UI.ReferenceFacet',
-            Target : 'attachment/@UI.LineItem',
-            Label  : '{i18n>attachmentList}'
-        }, ],
+        Facets                          : [
+            {
+                $Type  : 'UI.ReferenceFacet',
+                Target : '@UI.FieldGroup#PubblicationDetails',
+                Label  : '{i18n>pubblicationDetails}'
+            },
+            {
+                $Type  : 'UI.ReferenceFacet',
+                Target : 'attachment/@UI.LineItem',
+                Label  : '{i18n>attachmentList}'
+            },
+        ],
         LineItem                        : [
             {
                 $Type : 'UI.DataField',
