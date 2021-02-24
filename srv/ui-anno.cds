@@ -167,12 +167,7 @@ annotate AdminService.Attachments with @(UI : {
             $Type : 'UI.DataField',
             Value : createdAt,
             Label : '{i18n>attachmentCreatedAt}'
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : mimeType,
-            Label : '{i18n>attachmentType}'
-        },
+        }
     ]
 }) {
 
