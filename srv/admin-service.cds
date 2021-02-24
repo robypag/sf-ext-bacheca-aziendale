@@ -23,6 +23,12 @@ service AdminService @(
         }
     ])                    as projection on db.Pubblication;
 
+
+    @Capabilities : {
+        Insertable : false,
+        Updatable  : false,
+        Deletable  : true
+    }
     entity Attachments    as projection on db.Attachment {
         * , null as attachmentUrl : String
     }

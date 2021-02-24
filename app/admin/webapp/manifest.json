@@ -123,6 +123,18 @@
                                         "route": "AttachmentDetails"
                                     }
                                 }
+                            },
+                            "controlConfiguration": {
+                                "attachment/@com.sap.vocabularies.UI.v1.LineItem": {
+                                    "actions": {
+                                        "ATTACH_FILE": {
+                                            "press": "itg.sf.bachecaadmin.ext.controller.AttachmentUpload.onHandleFileUpload",
+                                            "visible": true,
+                                            "enabled": true,
+                                            "text": "Upload Attachment"
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
