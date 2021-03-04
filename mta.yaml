@@ -48,7 +48,6 @@ modules:
           - name: sf-ext-bacheca-aziendale-uaa
           - name: sf-ext-bacheca-aziendale-destination
       build-parameters:
-          build-result: dist
           builder: custom
           commands:
               - npm install
@@ -63,7 +62,6 @@ modules:
           - name: sf-ext-bacheca-aziendale-uaa
           - name: sf-ext-bacheca-aziendale-destination
       build-parameters:
-          build-result: dist
           builder: custom
           commands:
               - npm install
@@ -110,7 +108,7 @@ modules:
       parameters:
           content:
               subaccount:
-                  existing_destination_policy: update
+                  existing_destinations_policy: update
                   destinations:
                       - Name: sf-ext-bacheca-aziendale-dest_html5
                         ServiceInstanceName: sf-ext-bacheca-aziendale-html5_repo_host
@@ -159,7 +157,7 @@ resources:
           config:
               init_data:
                   subaccount:
-                      existing_destination_policy: update
+                      existing_destinations_policy: update
                       destinations:
                           - Name: sf_bacheca_aziendale_cap_api
                             Description: CAP-Based service for Bacheca Aziendale
