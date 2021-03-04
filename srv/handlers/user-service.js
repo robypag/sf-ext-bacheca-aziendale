@@ -36,6 +36,7 @@ class PubblicationService extends cds.ApplicationService {
                 );
                 return EmploymentInfoService.tx(req).run(jobInfoQuery);
             } catch (oDataError) {
+                console.error(oDataError);
                 req.error(
                     `Connection to SuccessFactors failed! Data for User ${req.user} cannot be retrieved`
                 );

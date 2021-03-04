@@ -4,10 +4,7 @@
     "**/.git": true,
     "**/.vscode": true
   },
-  "files.watcherExclude": {
-    "**/node_modules/**": false,
-    "**/node_modules/[!@]*/**/*": true
-  },
+  "files.watcherExclude": {},
   "sqltools.connections": [
     {
       "previewLimit": 50,

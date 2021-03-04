@@ -12,8 +12,8 @@ annotate AdminService.Pubblications with @(
         }, ],
         HeaderInfo                      : {
             $Type          : 'UI.HeaderInfoType',
-            TypeName       : '{i18n>pubblicationType}',
-            TypeNamePlural : '{i18n>pubblicationTypePlural}',
+            TypeName       : '{i18n>pubblication}',
+            TypeNamePlural : '{i18n>pubblicationPlural}',
             Title          : {
                 $Type : 'UI.DataField',
                 Value : title,
@@ -49,15 +49,20 @@ annotate AdminService.Pubblications with @(
                     Value : area_id,
                     Label : '{i18n>validFor}',
                 },
-                {
+                /**{
                     $Type : 'UI.DataField',
                     Value : notifyUsers,
                     Label : '{i18n>notifyUsers}'
-                },
+                },*/
                 {
                     $Type : 'UI.DataField',
                     Value : type_code,
                     Label : '{i18n>pubblicationType}'
+                },
+                {
+                    $Type : 'UI.DataField',
+                    Value : originalDate,
+                    Label : '{i18n>originalDate}',
                 },
             ],
         },

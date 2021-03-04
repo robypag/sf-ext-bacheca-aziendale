@@ -74,11 +74,8 @@
         }
       },
       "db": {
-        "kind": "sql",
-        "model": "*",
-        "credentials": {
-          "database": "data.db"
-        }
+        "kind": "sqlite",
+        "model": "*"
       },
       "PLTTodo": {
         "kind": "odata",
