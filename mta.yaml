@@ -70,7 +70,7 @@ modules:
 
     ## HTML5 Deployer UI Module
     - name: sf-ext-bacheca-aziendale-ui_deployer
-      type: com.sap.html5.application-content
+      type: com.sap.application.content
       path: ui_deployer
       requires:
           - name: sf-ext-bacheca-aziendale-html5_repo_host
