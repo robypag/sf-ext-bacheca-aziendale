@@ -3,7 +3,6 @@ ID: sf-ext-bacheca-aziendale
 description: SuccessFactors Extension - Bacheca Aziendale
 version: 1.0.0
 parameters:
-    deploy-mode: html5-repo
     enable-parallel-deployments: true
 build-parameters:
     before-all:
@@ -21,6 +20,7 @@ modules:
       parameters:
           disk-quota: 512M
           memory: 256M
+
     ## CAP SERVER MODULE
     - name: sf-ext-bacheca-aziendale-srv
       type: nodejs
@@ -39,6 +39,7 @@ modules:
           memory: 512M
       deployed-after:
           - sf-ext-bacheca-aziendale-db
+
     ## Admin UI Module
     - name: sf-ext-bacheca-aziendale-admin-ui
       type: html5
@@ -53,6 +54,7 @@ modules:
               - npm install
               - npm run build
           supported-platforms: []
+
     ## Employee UI Module
     - name: sf-ext-bacheca-aziendale-ui
       type: html5
@@ -67,60 +69,77 @@ modules:
               - npm install
               - npm run build
           supported-platforms: []
+
     ## HTML5 Deployer UI Module
     - name: sf-ext-bacheca-aziendale-ui_deployer
       type: com.sap.html5.application-content
       path: ui_deployer
       requires:
           - name: sf-ext-bacheca-aziendale-html5_repo_host
+            parameters:
+                content-target: true
       build-parameters:
+          build-result: resources
           requires:
-              - artifacts:
-                    - "./*"
-                name: sf-ext-bacheca-aziendale-admin-ui
-                target-path: resources/admin
-              - artifacts:
-                    - "./*"
-                name: sf-ext-bacheca-aziendale-ui
-                target-path: resources/employee
-    ## HTML5 Approuter
-    - name: sf-ext-bacheca-aziendale-approuter
-      type: approuter.nodejs
-      path: approuter
-      parameters:
-          disk-quota: 128M
-          memory: 256M
+              - name: sf-ext-bacheca-aziendale-admin-ui
+                artifacts:
+                    - dist/admin.zip
+                target-path: resources
+              - name: sf-ext-bacheca-aziendale-ui
+                artifacts:
+                    - dist/employee.zip
+                target-path: resources
+
+    ## Managed HTML5 Repository
+    - name: sf-ext-bacheca-aziendale-destination_content
+      type: com.sap.application.content
+      build-parameters:
+          no-source: true
       requires:
-          - name: sf-ext-bacheca-aziendale-html5_repo_runtime
           - name: sf-ext-bacheca-aziendale-uaa
-          - name: srv_api
-            group: destinations
-            properties:
-                forwardAuthToken: true
-                name: srv_api
-                url: ~{url}
+            parameters:
+                service-key:
+                    name: sf-ext-bacheca-aziendale-uaa_key
+          - name: sf-ext-bacheca-aziendale-html5_repo_host
+            parameters:
+                service-key:
+                    name: sf-ext-bacheca-aziendale-html5_repo_host_key
           - name: sf-ext-bacheca-aziendale-destination
-resources:
-    # HTML5 Repo Runtime Service
-    - name: sf-ext-bacheca-aziendale-html5_repo_runtime
-      type: org.cloudfoundry.managed-Service
+            parameters:
+                content-target: true
       parameters:
-          service: html5-apps-repo
-          service-plan: app-runtime
+          content:
+              subaccount:
+                  existing_destination_policy: update
+                  destinations:
+                      - Name: sf-ext-bacheca-aziendale-dest_html5
+                        ServiceInstanceName: sf-ext-bacheca-aziendale-html5_repo_host
+                        ServiceKeyName: sf-ext-bacheca-aziendale-html5_repo_host_key
+                        sap.cloud.service: sf_bacheca_aziendale.service
+                      - Name: sf-ext-bacheca-aziendale-dest_uaa
+                        ServiceInstanceName: sf-ext-bacheca-aziendale-uaa
+                        ServiceKeyName: sf-ext-bacheca-aziendale-uaa_key
+                        sap.cloud.service: sf_bacheca_aziendale.service
+
+resources:
     # HTML5 Repo Host Service
     - name: sf-ext-bacheca-aziendale-html5_repo_host
       type: org.cloudfoundry.managed-service
       parameters:
-          service: html-apps-repo
+          service: html5-apps-repo
           service-plan: app-host
+
     # HANA HDI Container
     - name: sf-ext-bacheca-aziendale-hdi-container
       type: com.sap.xs.hdi-container
       parameters:
           service: hana
           service-plan: hdi-shared
+          config:
+              database_id: 898cbdd4-1202-4153-a575-a4a166caa120
       properties:
           hdi-container-name: ${service-name}
+
     # Authentication and Authorization Service
     - name: sf-ext-bacheca-aziendale-uaa
       type: org.cloudfoundry.managed-service
@@ -128,18 +147,36 @@ resources:
           service: xsuaa
           service-plan: application
           path: sec/xs-security.json
+
     # Destination Service
     - name: sf-ext-bacheca-aziendale-destination
       type: org.cloudfoundry.managed-service
+      requires:
+          - name: srv_api
       parameters:
           service: destination
           service-plan: lite
+          config:
+              init_data:
+                  subaccount:
+                      existing_destination_policy: update
+                      destinations:
+                          - Name: sf_bacheca_aziendale_cap_api
+                            Description: CAP-Based service for Bacheca Aziendale
+                            Authentication: NoAuthentication
+                            ProxyType: Internet
+                            Type: HTTP
+                            URL: ~{srv_api/url}
+                            HTML5.DynamicDestination: true
+                            HTML5.ForwardAuthToken: true
+
     # Application Log
     - name: sf-ext-bacheca-aziendale-applog
       type: org.cloudfoundry.managed-service
       parameters:
           service: application-logs
           service-plan: lite
+
     # SuccessFactors Extensibility Service
     - name: sf-ext-system-api-access
       type: org.cloudfoundry.managed-service
@@ -147,4 +184,4 @@ resources:
           service: sap-successfactors-extensibility
           service-plan: api-access
           config:
-              systemName: ItalgasEmployeeCentral
+              systemName: EC_PREPROD

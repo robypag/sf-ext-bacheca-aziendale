@@ -1,0 +1,43 @@
+
+<mvc:View controllerName="itg.sf.bacheca.controller.Home"
+xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+xmlns="sap.m"
+xmlns:f="sap.f"
+xmlns:l="sap.ui.layout"
+height="100%">
+<App id="app">
+    <pages>
+        <f:DynamicPage id="dynamicPageId" headerExpanded="true" toggleHeaderOnTitleClick="false">
+            <f:title>
+                <f:DynamicPageTitle>
+                    <f:heading>
+                        <Title text="{i18n>appTitle}"/>
+                    </f:heading>
+                    <f:expandedContent>
+                        <!-- <Label text="Welcome Username"/> -->
+                    </f:expandedContent>
+                    <f:snappedContent>
+                        <!-- <Label text="Welcome Username"/> -->
+                    </f:snappedContent>
+                    <f:snappedTitleOnMobile>
+                        <Title text="{i18n>appTitle}"/>
+                    </f:snappedTitleOnMobile>
+                    <f:content>
+                        <OverflowToolbar visible="{= !${device>/system/phone} }">
+                            <!-- <Label text="Test Mobile"/> -->
+                        </OverflowToolbar>
+                    </f:content>
+                    <f:actions>
+                    </f:actions>
+                </f:DynamicPageTitle>
+            </f:title>
+            <f:header>
+                <f:DynamicPageHeader pinnable="true">
+                </f:DynamicPageHeader>
+            </f:header>
+            <f:content>
+            </f:content>
+        </f:DynamicPage>
+    </pages>
+</App>
+</mvc:View>
