@@ -13,7 +13,7 @@
     "scripts": {
         "start": "fiori run --open index.html",
         "start-local": "fiori run --config ./ui5-local.yaml --open index.html",
-        "build": "ui5 build -a --clean-dest --include-task=generateManifestBundle generateCachebusterInfo",
+        "build": "ui5 build --config=ui5.yaml --clean-dest --dest dist --include-task=generateManifestBundle",
         "deploy": "fiori add deploy-config"
     },
     "devDependencies": {

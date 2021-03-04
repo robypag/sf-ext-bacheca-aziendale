@@ -36,6 +36,7 @@ entity Pubblication : managed, cuid {
     };
     type        : Category;
     notifyUsers : Boolean;
+    originalDate : Date;
     area        : Association to one Area;
     attachment  : Composition of many Attachment
                       on attachment.pubblication = $self;

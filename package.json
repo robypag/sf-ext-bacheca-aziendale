@@ -7,6 +7,8 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^4",
+    "@sap/cds-odata-v2-adapter-proxy": "^1.5.1",
+    "@sap/hana-client": "^2.4.196",
     "@sap/xsenv": "^3.1.0",
     "@sap/xssec": "^3.1.1",
     "express": "^4",
@@ -19,76 +21,104 @@
     "start": "cds run"
   },
   "cds": {
-    "requires": {
-      "auth": {
-        "strategy": "mock",
-        "users": {
-          "admin": {
-            "password": "admin",
-            "roles": [
-              "admin-user"
-            ],
-            "userAttributes": {
-              "Area": "1A"
-            }
-          },
-          "PLGGMR78D09F205Q": {
-            "password": "password",
-            "roles": [
-              "employee"
-            ]
+    "[development]": {
+      "requires": {
+        "db": {
+          "kind": "sqlite",
+          "model": "*"
+        },
+        "auth": {
+          "strategy": "mock",
+          "users": {}
+        },
+        "ECFoundationOrganization": {
+          "kind": "odata",
+          "model": "srv/external/ECFoundationOrganization",
+          "credentials": {
+            "url": "https://api2.successfactors.eu/",
+            "path": "/odata/v2",
+            "requestTimeout": 18000000,
+            "username": "SFAPI@italgasretD",
+            "password": "password"
+          }
+        },
+        "ECEmploymentInformation": {
+          "kind": "odata",
+          "model": "srv/external/ECEmploymentInformation",
+          "credentials": {
+            "url": "https://api2.successfactors.eu/",
+            "path": "/odata/v2",
+            "requestTimeout": 18000000,
+            "username": "SFAPI@italgasretD",
+            "password": "password"
+          }
+        },
+        "PLTUserManagement": {
+          "kind": "odata",
+          "model": "srv/external/PLTUserManagement",
+          "credentials": {
+            "url": "https://api2.successfactors.eu/",
+            "path": "/odata/v2",
+            "requestTimeout": 18000000,
+            "username": "SFAPI@italgasretD",
+            "password": "password"
+          }
+        },
+        "PLTTodo": {
+          "kind": "odata",
+          "model": "srv/external/PLTTodo",
+          "credentials": {
+            "url": "https://api2.successfactors.eu/",
+            "path": "/odata/v2",
+            "requestTimeout": 18000000,
+            "username": "SFAPI@italgasretD",
+            "password": "password"
           }
         }
+      }
+    },
+    "[production]": {
+      "hana": {
+        "deploy-format": "hdbtable"
       },
-      "ECFoundationOrganization": {
-        "kind": "odata",
-        "model": "srv/external/ECFoundationOrganization",
-        "credentials": {
-          "url": "https://api2.successfactors.eu/",
-          "path": "/odata/v2",
-          "requestTimeout": 18000000,
-          "username": "SFAPI@italgasretD",
-          "password": "password"
-        }
-      },
-      "ECEmploymentInformation": {
-        "kind": "odata",
-        "model": "srv/external/ECEmploymentInformation",
-        "credentials": {
-          "url": "https://api2.successfactors.eu/",
-          "path": "/odata/v2",
-          "requestTimeout": 18000000,
-          "username": "SFAPI@italgasretD",
-          "password": "password"
-        }
-      },
-      "PLTUserManagement": {
-        "kind": "odata",
-        "model": "srv/external/PLTUserManagement",
-        "credentials": {
-          "url": "https://api2.successfactors.eu/",
-          "path": "/odata/v2",
-          "requestTimeout": 18000000,
-          "username": "SFAPI@italgasretD",
-          "password": "password"
-        }
-      },
-      "db": {
-        "kind": "sql",
-        "model": "*",
-        "credentials": {
-          "database": "data.db"
-        }
-      },
-      "PLTTodo": {
-        "kind": "odata",
-        "model": "srv/external/PLTTodo",
-        "credentials": {
-          "url": "https://api2.successfactors.eu/",
-          "path": "/odata/v2",
-          "requestTimeout": 18000000,
-          "username": "SFAPI@italgasretD",
-          "password": "password"
+      "requires": {
+        "uaa": {
+          "kind": "xsuaa"
+        },
+        "db": {
+          "kind": "hana"
+        },
+        "ECFoundationOrganization": {
+          "kind": "odata",
+          "model": "srv/external/ECFoundationOrganization",
+          "credentials": {
+            "destination": "sf-ext-system-api-access",
+            "path": "/odata/v2"
+          }
+        },
+        "ECEmploymentInformation": {
+          "kind": "odata",
+          "model": "srv/external/ECEmploymentInformation",
+          "credentials": {
+            "destination": "sf-ext-system-api-access",
+            "path": "/odata/v2"
+          }
+        },
+        "PLTUserManagement": {
+          "kind": "odata",
+          "model": "srv/external/PLTUserManagement",
+          "credentials": {
+            "destination": "sf-ext-system-api-access",
+            "path": "/odata/v2"
+          }
+        },
+        "PLTTodo": {
+          "kind": "odata",
+          "model": "srv/external/PLTTodo",
+          "credentials": {
+            "destination": "sf-ext-system-api-access",
+            "path": "/odata/v2"
+          }
         }
       }
     }

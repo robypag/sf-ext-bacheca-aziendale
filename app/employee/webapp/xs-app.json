@@ -2,11 +2,9 @@
     "welcomeFile": "/index.html",
     "authenticationMethod": "route",
     "routes": [{
-            "source": "^/browse/(.*)$",
-            "target": "/browse/$1",
-            "destination": "srv_api",
-            "authenticationType": "xsuaa",
-            "csrfProtection": false
+            "source": "^/browse/",
+            "authenticationType": "none",
+            "destination": "sf_bacheca_aziendale_cap_api"
         },
         {
             "source": "^(.*)$",
