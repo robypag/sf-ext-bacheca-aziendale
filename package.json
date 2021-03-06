@@ -15,7 +15,7 @@
     "passport": "^0.4.1"
   },
   "devDependencies": {
-    "sqlite3": "5.0.0"
+    "sqlite3": "^5.0.0"
   },
   "scripts": {
     "start": "cds run"
@@ -29,7 +29,23 @@
         },
         "auth": {
           "strategy": "mock",
-          "users": {}
+          "users": {
+            "admin": {
+              "password": "admin",
+              "roles": [
+                "admin-user"
+              ],
+              "userAttributes": {
+                "Area": "1A"
+              }
+            },
+            "PLGGMR78D09F205Q": {
+              "password": "password",
+              "roles": [
+                "employee"
+              ]
+            }
+          }
         },
         "ECFoundationOrganization": {
           "kind": "odata",

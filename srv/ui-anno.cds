@@ -49,11 +49,11 @@ annotate AdminService.Pubblications with @(
                     Value : area_id,
                     Label : '{i18n>validFor}',
                 },
-                /**{
-                    $Type : 'UI.DataField',
-                    Value : notifyUsers,
-                    Label : '{i18n>notifyUsers}'
-                },*/
+                /**
+                 * { $Type : 'UI.DataField', Value : notifyUsers, Label :
+                 * '{i18n>notifyUsers}' },
+                 */
+
                 {
                     $Type : 'UI.DataField',
                     Value : type_code,
@@ -122,7 +122,7 @@ annotate AdminService.Pubblications with @(
 }
 
 annotate AdminService.Pubblications with {
-    ID          @title : '{i18n>pubblicationId}'  @UI.HiddenFilter;
+    ID          @title : '{i18n>pubblicationId}'  @UI.HiddenFilter  @Core.Computed;
     title       @title : '{i18n>pubblicationTitle}';
     area        @title : '{i18n>assignedArea}'  @Common     : {
         Text            : area.name,

@@ -144,7 +144,7 @@ resources:
       parameters:
           service: xsuaa
           service-plan: application
-          path: sec/xs-security.json
+          path: ./xs-security.json
 
     # Destination Service
     - name: sf-ext-bacheca-aziendale-destination

@@ -4,6 +4,9 @@
   "scopes": [{
     "name": "$XSAPPNAME.admin-user",
     "description": "Administrator user, provides full application access"
+  }, {
+    "name": "$XSAPPNAME.employee",
+    "description": "Standard Employee, read-only access"
   }],
   "attributes": [{
     "name": "Area",
@@ -15,5 +18,9 @@
     "description": "Manage Pubblications for the associated Area",
     "scope-references": ["$XSAPPNAME.admin-user"],
     "attribute-references": ["Area"]
+  }, {
+    "name": "Employee",
+    "description": "Standard Employee, read-only access",
+    "scope-references": ["$XSAPPNAME.employee"]
   }]
 }

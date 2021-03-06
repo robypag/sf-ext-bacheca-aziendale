@@ -1,0 +1,70 @@
+# Build Multitarget Application & Deploy it to Cloud Foundry
+name: CF-Deploy
+
+# Controls when the action will run.
+on:
+    # Triggers the workflow on push or pull request events but only for the master branch
+    push:
+        branches: [master]
+
+jobs:
+    build:
+        # The type of runner that the job will run on
+        runs-on: ubuntu-latest
+        # Steps represent a sequence of tasks that will be executed as part of the job
+        steps:
+            # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+            - uses: actions/checkout@v2
+            # Setup use of Node-12
+            - name: Use Node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 12
+            # Install MBT Tool
+            - name: Install MTA Build Tool
+              run: npm install -g mbt
+            # Avoid package-lock.json generation
+            - name: Disable package-lock.json
+              run: npm config set package-lock false
+            # Build MTA
+            - name: Build MTA
+              run: mbt build -p=cf
+            # Upload Results
+            - name: Upload Artifacts
+              uses: actions/upload-artifact@master
+              with:
+                  name: mta
+                  path: mta_archives/sf-ext-bacheca-aziendale_1.0.0.mtar
+    # Deploy Step:
+    deploy:
+        # Run after Build step
+        needs: [build]
+        # The type of runner that the job will run on
+        runs-on: ubuntu-latest
+        steps:
+            # Delete SF-API-Access Service
+            - name: Delete SF-API-Access Service
+              uses: guerric-p/cf-cli-action@master
+              with:
+                  cf_api: ${{secrets.CF_API}}
+                  cf_username: ${{secrets.CF_USERNAME}}
+                  cf_password: ${{secrets.CF_PASSWORD}}
+                  cf_org: ${{secrets.CF_ORG}}
+                  cf_space: ${{secrets.CF_SPACE}}
+                  command: delete-service sf-ext-system-api-access -f
+            # Download generated MTA archive
+            - name: Download Artifacts
+              uses: actions/download-artifact@master
+              with:
+                  name: mta
+                  path: ./
+            # Deploy to Cloud Foundry space
+            - name: Deploy to Cloud Foundry
+              uses: guerric-p/cf-cli-action@master
+              with:
+                  cf_api: ${{secrets.CF_API}}
+                  cf_username: ${{secrets.CF_USERNAME}}
+                  cf_password: ${{secrets.CF_PASSWORD}}
+                  cf_org: ${{secrets.CF_ORG}}
+                  cf_space: ${{secrets.CF_SPACE}}
+                  command: deploy ./sf-ext-bacheca-aziendale_1.0.0.mtar -f
