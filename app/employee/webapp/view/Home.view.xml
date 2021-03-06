@@ -36,6 +36,18 @@ height="100%">
                 </f:DynamicPageHeader>
             </f:header>
             <f:content>
+                <List headerText="{i18n>newPubblicationList}" items="{ path: '/Pubblications', parameters: {expand: 'type'} }">
+				<FeedListItem
+					sender="{title}"
+					icon="sap-icon://workflow-tasks"
+					senderPress="onPress"
+					iconDensityAware="false"
+					info="{type/name}"
+					timestamp="{createdAt}"
+					text="{description}"
+					convertLinksToAnchorTags="All">
+				</FeedListItem>
+			</List>                
             </f:content>
         </f:DynamicPage>
     </pages>

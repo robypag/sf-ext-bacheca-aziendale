@@ -2,6 +2,8 @@ const cds = require("@sap/cds");
 
 class PubblicationService extends cds.ApplicationService {
     async init() {
+        // Initialize Superclass to activate generic handlers
+        super.init();
         // Reject all HTTP verbs beside READ
         this.reject(
             ["CREATE", "UPDATE", "DELETE"],
