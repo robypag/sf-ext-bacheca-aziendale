@@ -33,12 +33,12 @@
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "Claudio",
-                    "action": "Banfi",
+                    "semanticObject": "Bacheca",
+                    "action": "Manage",
                     "title": "{{tileTitle}}",
                     "subTitle": "{{tileSubtitle}}",
                     "info": "{{appDescription}}",
-                    "icon": "sap-icon://download-from-cloud"
+                    "icon": "sap-icon://key-user-settings"
                 }
             }
         }

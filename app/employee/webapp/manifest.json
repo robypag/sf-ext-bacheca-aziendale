@@ -20,6 +20,22 @@
                     "localUri": "localService/metadata.xml"
                 }
             }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "intent1": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "Bacheca",
+                    "action": "Browse",
+                    "title": "{{tileTitle}}",
+                    "subTitle": "{{tileSubtitle}}",
+                    "info": "{{appDescription}}",
+                    "icon": "sap-icon://notification-2"
+                }
+            }
         }
     },
     "sap.ui": {
