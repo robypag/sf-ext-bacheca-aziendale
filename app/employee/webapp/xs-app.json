@@ -2,7 +2,7 @@
     "welcomeFile": "/index.html",
     "authenticationMethod": "route",
     "routes": [{
-            "source": "^/browse/",
+            "source": "^/v2/browse/",
             "authenticationType": "none",
             "destination": "sf_bacheca_aziendale_cap_api"
         },
