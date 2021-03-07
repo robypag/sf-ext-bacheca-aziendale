@@ -2,11 +2,27 @@ const cds = require("@sap/cds");
 
 class PubblicationService extends cds.ApplicationService {
     async init() {
+        // Initialize Superclass to activate generic handlers
+        super.init();
         // Reject all HTTP verbs beside READ
         this.reject(
             ["CREATE", "UPDATE", "DELETE"],
             ["SFUserInfo", "SFLocationInfo", "SFJobInfo"]
         );
+        this.after("READ", "Attachments", async (each) => {
+            if (Array.isArray(each)) {
+                each.forEach((e) => {
+                    console.info(e);
+                    e.attachmentUrl = `/v2/browse/Attachments(ID=${e.ID})/$value`;
+                });
+            } else {
+                // Might be null, if we are requiring the media value of this entity
+                if (each !== null) {
+                    console.info(each);
+                    each.attachmentUrl = `/v2/browse/Attachments(ID=${each.ID})/$value`;
+                }
+            }
+        });
         // Read UserInfo from SF
         this.on("READ", "SFUserInfo", async (req) => {
             try {

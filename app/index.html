@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <title>Bacheca Aziendale</title>
+
+        <script>
+            window["sap-ushell-config"] = {
+                defaultRenderer: "fiori2",
+                renderers: {
+                    fiori2: {
+                        componentData: {
+                            config: {
+                                search: "hidden",
+                            },
+                        },
+                    },
+                },
+                applications: {
+                    "Bacheca-manage": {
+                        title: "Amministrazione",
+                        description: "Amministrazione Bacheca Aziendale",
+                        additionalInformation:
+                            "SAPUI5.Component=itg.sf.bachecaadmin",
+                        applicationType: "URL",
+                        url: "/admin/webapp",
+                        navigationMode: "embedded",
+                    },
+                    "Bacheca-browse": {
+                        title: "Consultazione",
+                        description: "Consulta la Bacheca Aziendale",
+                        additionalInformation:
+                            "SAPUI5.Component=itg.sf.bacheca",
+                        applicationType: "URL",
+                        url: "/employee/webapp",
+                        navigationMode: "embedded",
+                    },
+                },
+            };
+        </script>
+
+        <script src="https://sapui5.hana.ondemand.com/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
+        <script
+            id="sap-ui-bootstrap"
+            src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+            data-sap-ui-libs="sap.m, sap.ushell, sap.ui.core, sap.fe.templates"
+            data-sap-ui-compatVersion="edge"
+            data-sap-ui-theme="sap_fiori_3"
+            data-sap-ui-frameOptions="allow"
+            data-sap-ui-xx-lesssupport="false"
+            data-sap-ui-async="true"
+        ></script>
+
+        <script>
+            sap.ui
+                .getCore()
+                .attachInit(() =>
+                    sap.ushell.Container.createRenderer().placeAt("content")
+                );
+        </script>
+    </head>
+    <body class="sapUiBody" id="content"></body>
+</html>

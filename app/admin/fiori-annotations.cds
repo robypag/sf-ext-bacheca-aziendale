@@ -1,4 +1,4 @@
-using {AdminService} from './admin-service';
+using {AdminService} from '../../srv/admin-service';
 
 annotate AdminService.Pubblications with @odata.draft.enabled;
 annotate AdminService.Pubblications with @fiori.draft.enabled;
