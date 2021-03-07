@@ -11,6 +11,11 @@ service PubblicationService @(
     requires : 'authenticated-user'
 ) {
 
+    @Capabilities : {
+        Insertable : false,
+        Updatable  : false,
+        Deletable  : false
+    }
     entity Pubblications @(restrict : [{
         grant : ['READ'],
         to    : 'authenticated-user'
@@ -18,8 +23,13 @@ service PubblicationService @(
         * , area.name as areaName
     };
 
+    @Capabilities : {
+        Insertable : false,
+        Updatable  : false,
+        Deletable  : false
+    }
     entity Attachments    as projection on db.Attachment {
-        * , mimeType, value, name
+        * , null as attachmentUrl : String
     }
 
     // Project external entities:
