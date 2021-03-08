@@ -35,8 +35,7 @@ service AdminService @(
 
     entity Areas @(restrict : [{
         grant : ['READ'],
-        to    : 'admin-user',
-        where : 'id = $user.Area'
+        to    : 'admin-user'
     }])                   as projection on db.Area;
 
     @cds.autoexpose
