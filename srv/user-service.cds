@@ -32,6 +32,9 @@ service PubblicationService @(
         * , null as attachmentUrl : String
     }
 
+    @cds.autoexpose
+    entity Areas          as projection on db.Area;
+
     // Project external entities:
 
     @cds.persistence.skip

@@ -24,6 +24,7 @@ annotate PubblicationService.Pubblications with @(UI : {
     SelectionFields                 : [
         title,
         originalDate,
+        area_id,
         createdBy
     ],
     LineItem                        : [
@@ -117,8 +118,39 @@ annotate PubblicationService.Pubblications with @(UI : {
     },
 }) {
     notifyUsers  @UI.Hidden;
-    title        @title : '{i18n>pubblicationTitle}';
-    originalDate @title : '{i18n>originalDate}';
+    title        @title            :                '{i18n>pubblicationTitle}';
+    originalDate @title            :                '{i18n>originalDate}';
+    area         @Common.ValueList :                {
+        $Type           : 'Common.ValueListType',
+        CollectionPath  : 'Areas',
+        SearchSupported : true,
+        Parameters      : [
+            {
+                $Type             : 'Common.ValueListParameterOut',
+                LocalDataProperty : area_id,
+                ValueListProperty : 'id',
+            },
+            {
+                $Type             : 'Common.ValueListParameterDisplayOnly',
+                ValueListProperty : 'name',
+            },
+        ],
+    }            @Common.ValueListWithFixedValues : true;
+    area_id      @title            :                '{i18n>validFor}';
+}
+
+annotate PubblicationService.Areas with @(
+    UI.Identification  : [{
+        $Type : 'UI.DataField',
+        Value : name
+    }],
+    UI.SelectionFields : [name],
+) {
+    id   @Common : {
+        Text            : name,
+        TextArrangement : #TextLast
+    };
+    name @title  : '{i18n>assignedArea}'
 }
 
 annotate PubblicationService.Attachments with @(UI : {

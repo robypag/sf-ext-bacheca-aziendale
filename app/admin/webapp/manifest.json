@@ -116,6 +116,7 @@
                     "options": {
                         "settings": {
                             "entitySet": "Pubblications",
+                            "variantManagement": "None",
                             "navigation": {
                                 "Pubblications": {
                                     "detail": {

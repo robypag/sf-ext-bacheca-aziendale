@@ -33,10 +33,8 @@ service AdminService @(
         * , null as attachmentUrl : String
     }
 
-    entity Areas @(restrict : [{
-        grant : ['READ'],
-        to    : 'admin-user'
-    }])                   as projection on db.Area;
+    @cds.autoexpose
+    entity Areas          as projection on db.Area;
 
     @cds.autoexpose
     entity LocationGroups as projection on db.LocationGroup;
