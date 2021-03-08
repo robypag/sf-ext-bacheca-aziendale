@@ -14,7 +14,7 @@
       "driver": "SQLite",
       "name": "LOCALDB",
       "group": "CAP",
-      "database": "${workspaceFolder:sf-ext-bacheca-aziendale}/data.db"
+      "database": "${workspaceFolder:sf-ext-bacheca-aziendale}/sqlite.db"
     }
   ]
 }
