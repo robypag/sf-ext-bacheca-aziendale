@@ -145,9 +145,9 @@
                                     "actions": {
                                         "ATTACH_FILE": {
                                             "press": "itg.sf.bachecaadmin.ext.controller.AttachmentUpload.onHandleFileUpload",
-                                            "visible": true,
+                                            "visible": "{= ${ui>/editMode} === 'Editable'}",
                                             "enabled": true,
-                                            "text": "Upload Attachment"
+                                            "text": "{i18n>uploadAttachment}"
                                         }
                                     }
                                 }

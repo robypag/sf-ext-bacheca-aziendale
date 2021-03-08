@@ -222,10 +222,11 @@ annotate AdminService.Areas with @(
         ],
     }
 ) {
-    id @Common : {
+    id   @Common : {
         Text            : name,
         TextArrangement : #TextLast
     };
+    name @title  : '{i18n>assignedArea}'
 }
 
 annotate AdminService.PubblicationType with @(
