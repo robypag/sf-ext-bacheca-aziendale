@@ -81,10 +81,6 @@ annotate AdminService.Pubblications with @(
         LineItem                        : [
             {
                 $Type : 'UI.DataField',
-                Value : ID,
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : title,
             },
             {
@@ -122,17 +118,20 @@ annotate AdminService.Pubblications with @(
 }
 
 annotate AdminService.Pubblications with {
-    ID          @title : '{i18n>pubblicationId}'  @UI.HiddenFilter  @Core.Computed;
-    title       @title : '{i18n>pubblicationTitle}';
-    area        @title : '{i18n>assignedArea}'  @Common     : {
+    ID           @title : '{i18n>pubblicationId}'  @UI.HiddenFilter  @Core.Computed;
+    title        @title : '{i18n>pubblicationTitle}'  @mandatory;
+    area         @title : '{i18n>assignedArea}'  @Common     : {
         Text            : area.name,
         TextArrangement : #TextLast
-    };
-    type        @title : '{i18n>pubblicationType}'  @Common : {
+    }            @mandatory;
+    type         @title : '{i18n>pubblicationType}'  @Common : {
         Text            : type.name,
         TextArrangement : #TextLast
-    };
-    description @UI.MultiLineText;
+    }            @mandatory;
+    description  @UI.MultiLineText  @mandatory;
+    originalDate @mandatory;
+    area_id      @title : '{i18n>validFor}'  @mandatory;
+    type_code    @mandatory;
 }
 
 annotate AdminService.Attachments with @(UI : {

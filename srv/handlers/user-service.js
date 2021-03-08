@@ -13,13 +13,13 @@ class PubblicationService extends cds.ApplicationService {
             if (Array.isArray(each)) {
                 each.forEach((e) => {
                     console.info(e);
-                    e.attachmentUrl = `/v2/browse/Attachments(ID=${e.ID})/$value`;
+                    e.attachmentUrl = `v2/browse/Attachments(ID=${e.ID})/$value`;
                 });
             } else {
                 // Might be null, if we are requiring the media value of this entity
                 if (each !== null) {
                     console.info(each);
-                    each.attachmentUrl = `/v2/browse/Attachments(ID=${each.ID})/$value`;
+                    each.attachmentUrl = `v2/browse/Attachments(ID=${each.ID})/$value`;
                 }
             }
         });
