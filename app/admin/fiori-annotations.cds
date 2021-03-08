@@ -179,48 +179,48 @@ annotate AdminService.Attachments with @(UI : {
 };
 
 annotate AdminService.Areas with @(
-    Common.SemanticKey                : [id],
-    UI.Identification                 : [{
+    Common.SemanticKey : [id],
+    UI.Identification  : [{
         $Type : 'UI.DataField',
         Value : name
     }],
-    UI.SelectionFields                : [name],
-    UI.HeaderInfo                     : {
-        $Type          : 'UI.HeaderInfoType',
-        TypeName       : '{i18n>areaType}',
-        TypeNamePlural : '{i18n>areaPluralType}',
-        Title          : {
-            $Type : 'UI.DataField',
-            Value : name,
-        },
+    UI.SelectionFields : [name],
+/*
+UI.HeaderInfo                     : {
+    $Type          : 'UI.HeaderInfoType',
+    TypeName       : '{i18n>areaType}',
+    TypeNamePlural : '{i18n>areaPluralType}',
+    Title          : {
+        $Type : 'UI.DataField',
+        Value : name,
     },
-    UI.LineItem                       : [
-        {Value : id},
-        {Value : name}
+},
+UI.LineItem                       : [
+    {Value : id},
+    {Value : name}
+],
+UI.HeaderFacets                   : [{
+    $Type  : 'UI.ReferenceFacet',
+    Target : '@UI.FieldGroup#AdministrativeData',
+}, ],
+UI.Facets                         : [{
+    $Type  : 'UI.ReferenceFacet',
+    Target : 'locationGroup/@UI.LineItem',
+}, ],
+UI.FieldGroup #AdministrativeData : {
+    $Type : 'UI.FieldGroupType',
+    Data  : [
+        {
+            $Type : 'UI.DataField',
+            Value : createdAt,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : createdBy,
+        },
     ],
-    UI.HeaderFacets                   : [{
-        $Type  : 'UI.ReferenceFacet',
-        Target : '@UI.FieldGroup#AdministrativeData',
-    }, ],
-    /*
-    UI.Facets                         : [{
-        $Type  : 'UI.ReferenceFacet',
-        Target : 'locationGroup/@UI.LineItem',
-    }, ],
-    */
-    UI.FieldGroup #AdministrativeData : {
-        $Type : 'UI.FieldGroupType',
-        Data  : [
-            {
-                $Type : 'UI.DataField',
-                Value : createdAt,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : createdBy,
-            },
-        ],
-    }
+}
+*/
 ) {
     id   @Common : {
         Text            : name,

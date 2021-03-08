@@ -2,15 +2,11 @@ GET https://api2.successfactors.eu/odata/v2/TodoEntryV2?$format=json&$top=20
 Authorization: Basic SFAPI@italgasretD:password
 
 ###
-POST http://localhost:4004/admin/Pubblications
+POST http://localhost:4004/media/Attachments
 Content-Type: application/json
-Authorization: Basic admin:admin
 
 {
-    "title": "Prova Pubblicazione",
-    "description": "Prova",
-    "criticality": 3,
-    "notifyUsers": true,
-    "area_id": "1A",
-    "IsActiveEntity": true
+    "mimeType": "text/plain",
+    "name": "test_app.txt",
+    "pubblication_ID": "3dd1998c-aaa8-4ba8-b948-17cf5ffed616"
 }

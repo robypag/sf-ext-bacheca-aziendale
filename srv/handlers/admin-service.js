@@ -3,9 +3,6 @@ const cds = require("@sap/cds");
 class AdminService extends cds.ApplicationService {
     async init() {
         super.init();
-        this.before("READ", "Areas", async (req) => {
-            console.info(req.user);
-        });
 
         this.after("READ", "Attachments", async (each) => {
             if (Array.isArray(each)) {
