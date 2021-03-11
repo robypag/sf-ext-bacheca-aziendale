@@ -48,6 +48,8 @@ annotate AdminService.Pubblications with @(
                     $Type : 'UI.DataField',
                     Value : area_id,
                     Label : '{i18n>validFor}',
+                    ![@Common.Label] : '{i18n>validFor}',
+                    ![@Common.Heading] : '{i18n>validFor}',
                 },
                 {
                     $Type : 'UI.DataField',
@@ -76,15 +78,19 @@ annotate AdminService.Pubblications with @(
         LineItem                        : [
             {
                 $Type : 'UI.DataField',
+                Value : ID,
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : title,
             },
             {
                 $Type : 'UI.DataField',
-                Value : type.name,
+                Value : type_code,
             },
             {
                 $Type : 'UI.DataField',
-                Value : area.name,
+                Value : area_id,
             },
             {
                 $Type : 'UI.DataField',
@@ -93,10 +99,9 @@ annotate AdminService.Pubblications with @(
             {
                 $Type : 'UI.DataField',
                 Value : createdBy
-            },
+            }
         ],
         SelectionFields                 : [
-            title,
             type_code,
             area_id
         ],
@@ -111,7 +116,7 @@ annotate AdminService.Pubblications with @(
         }]
     } @Common.ValueListWithFixedValues;
     type @Common.ValueList : {
-        CollectionPath : 'PubblicationType',
+        CollectionPath : 'PubblicationTypes',
         Parameters: [{
             $Type : 'Common.ValueListParameterInOut',
             LocalDataProperty : type_code,
@@ -122,19 +127,19 @@ annotate AdminService.Pubblications with @(
 
 annotate AdminService.Pubblications with {
     ID           @title : '{i18n>pubblicationId}'  @UI.HiddenFilter  @Core.Computed;
-    title        @title : '{i18n>pubblicationTitle}'  @mandatory;
+    title        @title : '{i18n>pubblicationTitle}';
     area         @title : '{i18n>assignedArea}'  @Common     : {
         Text            : area.name,
         TextArrangement : #TextOnly
-    }            @mandatory;
+    };
     type         @title : '{i18n>pubblicationType}'  @Common : {
         Text            : type.name,
         TextArrangement : #TextOnly
-    }            @mandatory;
-    description  @UI.MultiLineText  @mandatory;
-    originalDate @mandatory;
-    area_id      @title : '{i18n>validFor}'  @mandatory;
-    type_code    @mandatory;
+    };
+    description  @UI.MultiLineText;
+    originalDate @title : '{i18n>originalDate}';
+    area_id      @title : '{i18n>validFor}';
+    type_code    @title : '{i18n>pubblicationType}';
 }
 
 annotate AdminService.Attachments with @(UI : {
@@ -195,7 +200,7 @@ annotate AdminService.Areas with @(
     name @title  : '{i18n>assignedArea}'
 }
 
-annotate AdminService.PubblicationType with @(
+annotate AdminService.PubblicationTypes with @(
     Common.SemanticKey : [code],
     Identification     : [{Value : code}],
     UI                 : {SelectionFields : [name, descr]}

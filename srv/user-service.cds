@@ -34,6 +34,8 @@ service PubblicationService @(
 
     @cds.autoexpose
     entity Areas          as projection on db.Area;
+    @cds.autoexpose
+    entity PubblicationTypes as projection on db.PubblicationType;
 
     // Project external entities:
 

@@ -151,15 +151,16 @@
                     "name": "sap.suite.ui.generic.template.ListReport",
                     "list": true,
                     "settings": {
+                        "filterSettings": {
+                            "useDateRange": true
+                        },
+                        "tableSettings": {
+                            "type":"ResponsiveTable"
+                        },                        
                         "condensedTableLayout": true,
                         "smartVariantManagement": true,
                         "variantManagementHidden": true,
-                        "enableTableFilterInPageVariant": false,
-                        "filterSettings": {
-                            "dateSettings": {
-                                "useDateRange": true
-                            }
-                        },
+                        "enableTableFilterInPageVariant": true,
                         "quickVariantSelectionX": {
                             "showCounts": true,
                             "enableAutoBinding": true,

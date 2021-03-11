@@ -4,6 +4,32 @@ class AdminService extends cds.ApplicationService {
     async init() {
         super.init();
 
+        this.before("SAVE", "Pubblications", async(req) => {
+            const pubblicationEntry = req.data;
+            console.info(req.target);
+            if (pubblicationEntry.area_id === null) {
+                req.error({
+                    code: 'MISSING_MANDATORY_FIELDS',
+                    args: ['Area RSU'],
+                    status: 400
+                });
+            }
+            if (pubblicationEntry.type_code === null) {
+                req.error({
+                    code: 'MISSING_MANDATORY_FIELDS',
+                    args: ['Tipologia'],
+                    status: 400
+                });
+            }
+            if (pubblicationEntry.originalDate === null) {
+                req.error({
+                    code: 'MISSING_MANDATORY_FIELDS',
+                    args: ['Data Accordo'],
+                    status: 400
+                });
+            }            
+        });
+
         this.after("READ", "Attachments", async (each) => {
             if (Array.isArray(each)) {
                 each.forEach((e) => {

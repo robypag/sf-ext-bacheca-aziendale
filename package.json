@@ -137,12 +137,6 @@
           }
         }
       }
-    },
-    "requires": {
-      "db": {
-        "kind": "sqlite",
-        "model": "*"
-      }
     }
   }
 }

@@ -6,11 +6,11 @@ using {
 
 namespace sf.ext.bachecaziendale;
 
-entity PubblicationType : CodeList {
-    key code : String(10);
+entity PubblicationType {
+    key code  : String(10);
+        name  : String(255);
+        descr : String(1000);
 }
-
-type Category : Association to PubblicationType;
 
 /**
  * List of Pubblications, handled by Administrator users,
@@ -23,18 +23,25 @@ type Category : Association to PubblicationType;
     CreatedBy   : createdBy,
     Heading     : '{i18n>pubblicationList}',
     Label       : '{i18n>pubblicationList}',
-    SemanticKey : [ID]
+    SemanticKey : [ID],
+    FilterExpressionRestrictions : [
+        {
+            $Type : 'Common.FilterExpressionRestrictionType',
+            Property: originalDate,
+            AllowedExpressions: #SingleInterval
+        },
+    ],
 }
 entity Pubblication : managed, cuid {
-    title       : String(100);
-    description : String(1000);
+    title       : String;
+    description : String;
     criticality : Integer enum {
         Important   = 1; // Red
         Medium      = 2; // Yellow
         Advice      = 3; // Green
         Informative = 0; // Grey / Blue
     };
-    type        : Category;
+    type        : Association to PubblicationType;
     notifyUsers : Boolean;
     originalDate : Date;
     area        : Association to one Area;
@@ -56,7 +63,7 @@ entity Pubblication : managed, cuid {
 }
 
 entity Area : managed {
-    key id            : String(20);
+    key id            : Integer;
         name          : String(100);
         locationGroup : Composition of many LocationGroup
                             on locationGroup.area = $self;

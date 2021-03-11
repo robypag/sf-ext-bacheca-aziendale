@@ -35,6 +35,8 @@ service AdminService @(
 
     @cds.autoexpose
     entity Areas          as projection on db.Area;
+    @cds.autoexpose
+    entity PubblicationTypes as projection on db.PubblicationType;
 
     @cds.autoexpose
     entity LocationGroups as projection on db.LocationGroup;

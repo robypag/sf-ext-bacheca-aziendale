@@ -22,28 +22,26 @@ annotate PubblicationService.Pubblications with @(UI : {
         },
     },
     SelectionFields                 : [
-        title,
         originalDate,
-        area_id,
-        createdBy
+        area_id
     ],
     LineItem                        : [
         {
             $Type : 'UI.DataField',
             Value : title,
-        },
+        },        
         {
             $Type : 'UI.DataField',
             Value : type.name,
         },
         {
             $Type : 'UI.DataField',
-            Value : originalDate,
-        },
+            Value : areaName,
+        },        
         {
             $Type : 'UI.DataField',
-            Value : createdBy,
-        },
+            Value : originalDate,
+        },        
     ],
     FieldGroup #AdminData           : {
         $Type : 'UI.FieldGroupType',
@@ -120,6 +118,8 @@ annotate PubblicationService.Pubblications with @(UI : {
     notifyUsers  @UI.Hidden;
     title        @title            :                '{i18n>pubblicationTitle}';
     originalDate @title            :                '{i18n>originalDate}';
+    areaName     @title : '{i18n>validFor}';
+    area_id      @title : '{i18n>validFor}';
     area         @Common.ValueList :                {
         $Type           : 'Common.ValueListType',
         CollectionPath  : 'Areas',
@@ -135,8 +135,7 @@ annotate PubblicationService.Pubblications with @(UI : {
                 ValueListProperty : 'name',
             },
         ],
-    }            @Common.ValueListWithFixedValues : true;
-    area_id      @title            :                '{i18n>validFor}';
+    } @Common.ValueListWithFixedValues : true @title : '{i18n>validFor}';
 }
 
 annotate PubblicationService.Areas with @(
@@ -148,7 +147,7 @@ annotate PubblicationService.Areas with @(
 ) {
     id   @Common : {
         Text            : name,
-        TextArrangement : #TextLast
+        TextArrangement : #TextOnly
     };
     name @title  : '{i18n>assignedArea}'
 }

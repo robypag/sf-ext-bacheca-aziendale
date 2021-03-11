@@ -123,6 +123,11 @@
                                         "route": "PubblicationDetails"
                                     }
                                 }
+                            },
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.SelectionFields": {
+                                    "useSemanticDateRange": false
+                                }
                             }
                         }
                     }
