@@ -49,11 +49,6 @@ annotate AdminService.Pubblications with @(
                     Value : area_id,
                     Label : '{i18n>validFor}',
                 },
-                /**
-                 * { $Type : 'UI.DataField', Value : notifyUsers, Label :
-                 * '{i18n>notifyUsers}' },
-                 */
-
                 {
                     $Type : 'UI.DataField',
                     Value : type_code,
@@ -107,14 +102,22 @@ annotate AdminService.Pubblications with @(
         ],
     }
 ) {
-    area @ValueList : {
-        entity : 'Areas',
-        type   : #fixed
-    };
-    type @ValueList : {
-        entity : 'PubblicationType',
-        type   : #fixed
-    };
+    area @Common.ValueList : {
+        CollectionPath : 'Areas',
+        Parameters: [{
+            $Type : 'Common.ValueListParameterInOut',
+            LocalDataProperty : area_id,
+            ValueListProperty : 'id',
+        }]
+    } @Common.ValueListWithFixedValues;
+    type @Common.ValueList : {
+        CollectionPath : 'PubblicationType',
+        Parameters: [{
+            $Type : 'Common.ValueListParameterInOut',
+            LocalDataProperty : type_code,
+            ValueListProperty : 'code',
+        }]
+    } @Common.ValueListWithFixedValues;
 }
 
 annotate AdminService.Pubblications with {
@@ -122,11 +125,11 @@ annotate AdminService.Pubblications with {
     title        @title : '{i18n>pubblicationTitle}'  @mandatory;
     area         @title : '{i18n>assignedArea}'  @Common     : {
         Text            : area.name,
-        TextArrangement : #TextLast
+        TextArrangement : #TextOnly
     }            @mandatory;
     type         @title : '{i18n>pubblicationType}'  @Common : {
         Text            : type.name,
-        TextArrangement : #TextLast
+        TextArrangement : #TextOnly
     }            @mandatory;
     description  @UI.MultiLineText  @mandatory;
     originalDate @mandatory;
@@ -184,42 +187,6 @@ annotate AdminService.Areas with @(
         Value : name
     }],
     UI.SelectionFields : [name],
-/*
-UI.HeaderInfo                     : {
-    $Type          : 'UI.HeaderInfoType',
-    TypeName       : '{i18n>areaType}',
-    TypeNamePlural : '{i18n>areaPluralType}',
-    Title          : {
-        $Type : 'UI.DataField',
-        Value : name,
-    },
-},
-UI.LineItem                       : [
-    {Value : id},
-    {Value : name}
-],
-UI.HeaderFacets                   : [{
-    $Type  : 'UI.ReferenceFacet',
-    Target : '@UI.FieldGroup#AdministrativeData',
-}, ],
-UI.Facets                         : [{
-    $Type  : 'UI.ReferenceFacet',
-    Target : 'locationGroup/@UI.LineItem',
-}, ],
-UI.FieldGroup #AdministrativeData : {
-    $Type : 'UI.FieldGroupType',
-    Data  : [
-        {
-            $Type : 'UI.DataField',
-            Value : createdAt,
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : createdBy,
-        },
-    ],
-}
-*/
 ) {
     id   @Common : {
         Text            : name,
@@ -231,16 +198,7 @@ UI.FieldGroup #AdministrativeData : {
 annotate AdminService.PubblicationType with @(
     Common.SemanticKey : [code],
     Identification     : [{Value : code}],
-    UI                 : {
-        SelectionFields : [
-            name,
-            descr
-        ],
-        LineItem        : [
-            {Value : code},
-            {Value : name}
-        ]
-    }
+    UI                 : {SelectionFields : [name, descr]}
 ) {
     code @Common : {
         Text            : name,
