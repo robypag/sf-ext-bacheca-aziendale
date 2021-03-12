@@ -33,12 +33,12 @@
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "Claudio",
-                    "action": "Banfi",
+                    "semanticObject": "Bacheca",
+                    "action": "Manage",
                     "title": "{{tileTitle}}",
                     "subTitle": "{{tileSubtitle}}",
                     "info": "{{appDescription}}",
-                    "icon": "sap-icon://download-from-cloud"
+                    "icon": "sap-icon://key-user-settings"
                 }
             }
         }
@@ -116,11 +116,17 @@
                     "options": {
                         "settings": {
                             "entitySet": "Pubblications",
+                            "variantManagement": "None",
                             "navigation": {
                                 "Pubblications": {
                                     "detail": {
                                         "route": "PubblicationDetails"
                                     }
+                                }
+                            },
+                            "controlConfiguration": {
+                                "@com.sap.vocabularies.UI.v1.SelectionFields": {
+                                    "useSemanticDateRange": false
                                 }
                             }
                         }
@@ -145,9 +151,9 @@
                                     "actions": {
                                         "ATTACH_FILE": {
                                             "press": "itg.sf.bachecaadmin.ext.controller.AttachmentUpload.onHandleFileUpload",
-                                            "visible": true,
+                                            "visible": "{= ${ui>/editMode} === 'Editable'}",
                                             "enabled": true,
-                                            "text": "Upload Attachment"
+                                            "text": "{i18n>uploadAttachment}"
                                         }
                                     }
                                 }

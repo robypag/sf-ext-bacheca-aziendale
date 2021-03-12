@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 sap.ui.define(
     ["itg/sf/bachecaadmin/control/FileUploaderV4"],
@@ -11,14 +12,14 @@ sap.ui.define(
                     );
                     new sap.m.MessageBox.show(sMessageText, {
                         icon: sap.m.MessageBox.Icon.ERROR,
-                        title: "Error",
+                        title: "Errore",
                         actions: sap.m.MessageBox.Action.OK,
                     });
                 } else {
                     aSelectedContexts.forEach((oSelectedContext) => {
                         oSelectedContext.delete();
                         var attachmentId = oSelectedContext.getObject().ID;
-                        fetch(`/admin/Attachments(ID=${attachmentId})`, {
+                        fetch(`admin/Attachments(ID=${attachmentId})`, {
                             method: "DELETE",
                         }).then((response) => {
                             if (!response.ok) {
@@ -29,7 +30,7 @@ sap.ui.define(
                                 oSelectedContext.delete();
                                 oSelectedContext.refresh();
                                 sap.m.MessageToast.show(
-                                    `Attachment ${attachmentId} deleted`
+                                    `Allegato ${attachmentId} cancellato correttamente`
                                 );
                             }
                         });
@@ -37,10 +38,21 @@ sap.ui.define(
                 }
             },
             onHandleFileUpload: function (oContext, aSelectedContexts) {
+                // An Info Message
+                var oInfoMessage = new sap.m.MessageStrip({
+                    showIcon: true,
+                    text:
+                        "Durante la creazione di una nuova Pubblicazione, assicurarsi di <strong>salvare</strong> l'inserimento <strong>prima</strong> di caricare un allegato",
+                    enableFormattedText: true,
+                    type: sap.ui.core.MessageType.Warning,
+                });
+                oInfoMessage.addStyleClass("sapUiSmallMargin");
                 // The file Uploader:
                 var oFileUpload = new FileUpload({
                     useMultipart: false,
-                    uploadUrl: "/admin/Attachments",
+                    uploadUrl: "admin/Attachments",
+                    buttonOnly: true,
+                    icon: "sap-icon://upload-to-cloud",
                     uploadComplete: function (oEvent) {
                         sap.m.MessageToast.show(`Upload Completed!`);
                         oDialog.close();
@@ -48,11 +60,13 @@ sap.ui.define(
                 });
                 // The VBox:
                 var oVBox = new sap.m.VBox({
+                    //class: "sapUiResponsiveMargin sapUiResponsivePadding",
                     width: "100%",
-                    alignItems: "Center",
-                    justifyContent: "Center",
-                    items: [oFileUpload],
+                    alignItems: sap.m.FlexAlignItems.Center,
+                    justifyContent: sap.m.FlexJustifyContent.Center,
+                    items: [oInfoMessage, oFileUpload],
                 });
+                oVBox.addStyleClass("sapUiResponsivePadding");
                 // The Dialog:
                 var oDialog = new sap.m.Dialog({
                     title: "Upload Attachment",

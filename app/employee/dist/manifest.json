@@ -1,112 +1,206 @@
 {
-    "_version": "1.29.0",
-    "sap.app": {
-        "id": "itg.sf.bacheca",
-        "type": "application",
-        "i18n": "i18n/i18n.properties",
-        "applicationVersion": {
-            "version": "1.0.0"
-        },
-        "title": "",
-        "description": "",
-        "resources": "resources.json",
-        "ach": "ach",
-        "dataSources": {
-            "mainService": {
-                "uri": "v2/browse",
-                "type": "OData",
-                "settings": {
-                    "odataVersion": "2.0",
-                    "localUri": "localService/metadata.xml"
-                }
-            }
+  "_version": "1.29.0",
+  "sap.app": {
+    "id": "itg.sf.bacheca",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "ach": "ach",
+    "dataSources": {
+      "mainService": {
+        "uri": "v2/browse",
+        "type": "OData",
+        "settings": {
+          "annotations": ["annotation"],
+          "localUri": "localService/metadata.xml"
         }
-    },
-    "sap.ui": {
-        "technology": "UI5",
-        "icons": {
-            "icon": "sap-icon://task",
-            "favIcon": "",
-            "phone": "",
-            "phone@2": "",
-            "tablet": "",
-            "tablet@2": ""
-        },
-        "deviceTypes": {
-            "desktop": true,
-            "tablet": true,
-            "phone": true
-        },
-        "fullWidth": true
-    },
-
-    "sap.ui5": {
-        "flexEnabled": false,
-        "rootView": {
-            "viewName": "itg.sf.bacheca.view.Home",
-            "type": "XML",
-            "async": true,
-            "id": "Home"
-        },
-        "dependencies": {
-            "minUI5Version": "1.66.0",
-            "libs": {
-                "sap.ui.core": {},
-                "sap.m": {},
-                "sap.ui.layout": {}
-            }
-        },
-        "contentDensities": {
-            "compact": true,
-            "cozy": true
-        },
-        "models": {
-            "i18n": {
-                "type": "sap.ui.model.resource.ResourceModel",
-                "settings": {
-                    "bundleName": "itg.sf.bacheca.i18n.i18n"
-                }
-            },
-            "": {
-                "dataSource": "mainService",
-                "preload": true,
-                "settings": {
-                    "useBatch": false
-                }
-            }
-        },
-        "resources": {
-            "css": [{
-                "uri": "css/style.css"
-            }]
-        },
-        "routing": {
-            "config": {
-                "routerClass": "sap.m.routing.Router",
-                "viewType": "XML",
-                "async": true,
-                "viewPath": "itg.sf.bacheca.view",
-                "controlAggregation": "pages",
-                "controlId": "app",
-                "clearControlAggregation": false
-            },
-            "routes": [{
-                "name": "RouteHome",
-                "pattern": "RouteHome",
-                "target": ["TargetHome"]
-            }],
-            "targets": {
-                "TargetHome": {
-                    "viewType": "XML",
-                    "transition": "slide",
-                    "clearControlAggregation": false,
-                    "viewId": "Home",
-                    "viewName": "Home"
-                }
-            }
+      },
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
         }
+      }
     },
-    "sap.cloud": {
-        "service": "sf_bacheca_aziendale.service"
+    "offline": false,
+    "sourceTemplate": {
+      "id": "ui5template.smartTemplate",
+      "version": "1.40.12"
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "intent1": {
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          },
+          "semanticObject": "Bacheca",
+          "action": "Browse",
+          "title": "{{tileTitle}}",
+          "subTitle": "{{tileSubtitle}}",
+          "info": "{{appDescription}}",
+          "icon": "sap-icon://notification-2"
+        }
+      }
     }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "sap-icon://task",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    },
+    "supportedThemes": [
+      "sap_hcb",
+      "sap_belize",
+      "sap_fiori_3",
+      "sap_bluecrystal"
+    ]
+  },
+  "sap.ui5": {
+    "resources": {
+      "js": [],
+      "css": []
+    },
+    "dependencies": {
+      "minUI5Version": "1.65.0",
+      "libs": {
+        "sap.ui.core": {
+          "lazy": false
+        },
+        "sap.ui.generic.app": {
+          "lazy": false
+        },
+        "sap.suite.ui.generic.template": {
+          "lazy": false
+        }
+      },
+      "components": {}
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      },
+      "i18n|sap.suite.ui.generic.template.ListReport|Pubblications": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/ListReport/Pubblications/i18n.properties"
+      },
+      "i18n|sap.suite.ui.generic.template.ObjectPage|Pubblications": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/ObjectPage/Pubblications/i18n.properties"
+      },
+
+      "i18n|sap.suite.ui.generic.template.ObjectPage|Attachments": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/ObjectPage/Attachments/i18n.properties"
+      },
+
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "defaultBindingMode": "TwoWay",
+          "defaultCountMode": "Inline",
+          "refreshAfterChange": false,
+          "metadataUrlParams": {
+            "sap-value-list": "none"
+          }
+        }
+      }
+    },
+    "extends": {
+      "extensions": {}
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    }
+  },
+  "sap.ui.generic.app": {
+    "_version": "1.3.0",
+    "settings": {
+      "forceGlobalRefresh": false,
+      "objectPageHeaderType": "Dynamic",
+      "showDraftToggle": false
+    },
+    "pages": {
+      "ListReport|Pubblications": {
+        "entitySet": "Pubblications",
+        "component": {
+          "name": "sap.suite.ui.generic.template.ListReport",
+          "list": true,
+          "settings": {
+            "filterSettings": {
+              "useDateRange": true
+            },
+            "tableSettings": {
+              "type": "ResponsiveTable"
+            },
+            "condensedTableLayout": true,
+            "smartVariantManagement": true,
+            "variantManagementHidden": true,
+            "enableTableFilterInPageVariant": true,
+            "quickVariantSelectionX": {
+              "showCounts": true,
+              "enableAutoBinding": true,
+              "variants": {
+                "0": {
+                  "key": "v0",
+                  "entitySet": "Pubblications",
+                  "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Accordi"
+                },
+                "1": {
+                  "key": "v1",
+                  "entitySet": "Pubblications",
+                  "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Comunicazioni"
+                }
+              }
+            }
+          }
+        },
+        "pages": {
+          "ObjectPage|Pubblications": {
+            "entitySet": "Pubblications",
+            "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+            "component": {
+              "name": "sap.suite.ui.generic.template.ObjectPage"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.platform.abap": {
+    "uri": ""
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.platform.hcp": {
+    "uri": ""
+  },
+  "sap.cloud": {
+    "service": "sf_bacheca_aziendale.service"
+  }
 }
