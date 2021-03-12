@@ -14,7 +14,7 @@ class AdminService extends cds.ApplicationService {
                     status: 400
                 });                
             }
-            if (pubblicationEntry.description === null) {
+            if (pubblicationEntry.description === null || pubblicationEntry.description === "") {
                 req.warn({
                     message: 'Non è stata inserita alcuna descrizione',
                     // args: ['Descrizione'],
