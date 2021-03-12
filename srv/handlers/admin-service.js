@@ -7,6 +7,20 @@ class AdminService extends cds.ApplicationService {
         this.before("SAVE", "Pubblications", async(req) => {
             const pubblicationEntry = req.data;
             console.info(req.target);
+            if (pubblicationEntry.title === null) {
+                req.error({
+                    code: 'MISSING_MANDATORY_FIELDS',
+                    args: ['Titolo'],
+                    status: 400
+                });                
+            }
+            if (pubblicationEntry.description === null) {
+                req.warn({
+                    code: 'DESCRIPTION_MISSING',
+                    args: ['Descrizione'],
+                    status: 400
+                });                
+            }            
             if (pubblicationEntry.area_id === null) {
                 req.error({
                     code: 'MISSING_MANDATORY_FIELDS',

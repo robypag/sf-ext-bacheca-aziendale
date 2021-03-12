@@ -17,38 +17,37 @@ annotate AdminService.Pubblications with @(
             Title          : {
                 $Type : 'UI.DataField',
                 Value : title,
-            },
-            Description    : {
-                $Type : 'UI.DataField',
-                Value : description,
-            },
+            }
         },
         HeaderFacets                    : [{
-            $Type  : 'UI.ReferenceFacet',
-            Target : '@UI.FieldGroup#AdminInfo',
-            Label  : '{i18n>administrativeInfo}'
+            $Type  : 'UI.CollectionFacet',
+            Facets : [{
+                $Type  : 'UI.ReferenceFacet',
+                Target : '@UI.FieldGroup#AdminInfo',
+            }, ],
         }, ],
         FieldGroup #AdminInfo           : {
             $Type : 'UI.FieldGroupType',
-            Data  : [
-                {
-                    $Type : 'UI.DataField',
-                    Value : createdAt,
-                },
-                {
-                    $Type : 'UI.DataField',
-                    Value : createdBy,
-                }
-            ],
+            Data  : [{
+                $Type : 'UI.DataField',
+                Value : createdAt,
+            }],
+        },
+        FieldGroup #Description         : {
+            $Type : 'UI.FieldGroupType',
+            Data  : [{
+                $Type : 'UI.DataField',
+                Value : description,
+            }, ]
         },
         FieldGroup #PubblicationDetails : {
             $Type : 'UI.FieldGroupType',
             Data  : [
                 {
-                    $Type : 'UI.DataField',
-                    Value : area_id,
-                    Label : '{i18n>validFor}',
-                    ![@Common.Label] : '{i18n>validFor}',
+                    $Type              : 'UI.DataField',
+                    Value              : area_id,
+                    Label              : '{i18n>validFor}',
+                    ![@Common.Label]   : '{i18n>validFor}',
                     ![@Common.Heading] : '{i18n>validFor}',
                 },
                 {
@@ -65,9 +64,18 @@ annotate AdminService.Pubblications with @(
         },
         Facets                          : [
             {
-                $Type  : 'UI.ReferenceFacet',
-                Target : '@UI.FieldGroup#PubblicationDetails',
-                Label  : '{i18n>pubblicationDetails}'
+                $Type  : 'UI.CollectionFacet',
+                Label  : '{i18n>pubblicationDetails}',
+                Facets : [
+                    {
+                        $Type  : 'UI.ReferenceFacet',
+                        Target : '@UI.FieldGroup#Description',
+                    },
+                    {
+                        $Type  : 'UI.ReferenceFacet',
+                        Target : '@UI.FieldGroup#PubblicationDetails'
+                    },
+                ],
             },
             {
                 $Type  : 'UI.ReferenceFacet',
@@ -81,16 +89,19 @@ annotate AdminService.Pubblications with @(
                 Value : ID,
             },
             {
-                $Type : 'UI.DataField',
-                Value : title,
+                $Type             : 'UI.DataField',
+                Value             : title,
+                ![@UI.Importance] : #High,
             },
             {
-                $Type : 'UI.DataField',
-                Value : type_code,
+                $Type             : 'UI.DataField',
+                Value             : type_code,
+                ![@UI.Importance] : #High,
             },
             {
-                $Type : 'UI.DataField',
-                Value : area_id,
+                $Type             : 'UI.DataField',
+                Value             : area_id,
+                ![@UI.Importance] : #High,
             },
             {
                 $Type : 'UI.DataField',
@@ -109,20 +120,20 @@ annotate AdminService.Pubblications with @(
 ) {
     area @Common.ValueList : {
         CollectionPath : 'Areas',
-        Parameters: [{
-            $Type : 'Common.ValueListParameterInOut',
+        Parameters     : [{
+            $Type             : 'Common.ValueListParameterInOut',
             LocalDataProperty : area_id,
             ValueListProperty : 'id',
         }]
-    } @Common.ValueListWithFixedValues;
+    }    @Common.ValueListWithFixedValues;
     type @Common.ValueList : {
         CollectionPath : 'PubblicationTypes',
-        Parameters: [{
-            $Type : 'Common.ValueListParameterInOut',
+        Parameters     : [{
+            $Type             : 'Common.ValueListParameterInOut',
             LocalDataProperty : type_code,
             ValueListProperty : 'code',
         }]
-    } @Common.ValueListWithFixedValues;
+    }    @Common.ValueListWithFixedValues;
 }
 
 annotate AdminService.Pubblications with {
@@ -136,7 +147,7 @@ annotate AdminService.Pubblications with {
         Text            : type.name,
         TextArrangement : #TextOnly
     };
-    description  @UI.MultiLineText;
+    description  @UI.MultiLineText  @title                   : '{i18n>description}';
     originalDate @title : '{i18n>originalDate}';
     area_id      @title : '{i18n>validFor}';
     type_code    @title : '{i18n>pubblicationType}';
@@ -172,11 +183,6 @@ annotate AdminService.Attachments with @(UI : {
         },
         {
             $Type : 'UI.DataField',
-            Value : createdBy,
-            Label : '{i18n>attachmentAuthor}'
-        },
-        {
-            $Type : 'UI.DataField',
             Value : createdAt,
             Label : '{i18n>attachmentCreatedAt}'
         }
@@ -203,7 +209,10 @@ annotate AdminService.Areas with @(
 annotate AdminService.PubblicationTypes with @(
     Common.SemanticKey : [code],
     Identification     : [{Value : code}],
-    UI                 : {SelectionFields : [name, descr]}
+    UI                 : {SelectionFields : [
+        name,
+        descr
+    ]}
 ) {
     code @Common : {
         Text            : name,

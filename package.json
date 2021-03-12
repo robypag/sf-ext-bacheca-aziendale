@@ -97,6 +97,13 @@
       "hana": {
         "deploy-format": "hdbtable"
       },
+      "i18n": {
+        "folders": [
+          "_i18n",
+          "i18n",
+          "srv/i18n"
+        ]
+      },
       "requires": {
         "uaa": {
           "kind": "xsuaa"

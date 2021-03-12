@@ -15,11 +15,7 @@ annotate PubblicationService.Pubblications with @(UI : {
         Title          : {
             $Type : 'UI.DataField',
             Value : title,
-        },
-        Description    : {
-            $Type : 'UI.DataField',
-            Value : description,
-        },
+        }
     },
     SelectionFields                 : [
         originalDate,
@@ -29,7 +25,7 @@ annotate PubblicationService.Pubblications with @(UI : {
         {
             $Type : 'UI.DataField',
             Value : title,
-        },        
+        },
         {
             $Type : 'UI.DataField',
             Value : type.name,
@@ -37,28 +33,26 @@ annotate PubblicationService.Pubblications with @(UI : {
         {
             $Type : 'UI.DataField',
             Value : areaName,
-        },        
+        },
         {
             $Type : 'UI.DataField',
             Value : originalDate,
-        },        
+        },
     ],
-    FieldGroup #AdminData           : {
+    FieldGroup #Description         : {
         $Type : 'UI.FieldGroupType',
-        Data  : [
-            {
-                $Type : 'UI.DataField',
-                Value : createdBy
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : createdAt
-            }
-        ],
+        Data  : [{
+            $Type : 'UI.DataField',
+            Value : description,
+        }, ]
     },
     FieldGroup #Details             : {
         $Type : 'UI.FieldGroupType',
         Data  : [
+            {
+                $Type : 'UI.DataField',
+                Value : areaName,
+            },
             {
                 $Type : 'UI.DataField',
                 Value : type.name
@@ -69,16 +63,20 @@ annotate PubblicationService.Pubblications with @(UI : {
             },
         ],
     },
-    HeaderFacets                    : [{
-        $Type  : 'UI.ReferenceFacet',
-        Target : '@UI.FieldGroup#AdminData',
-        Label  : '{i18n>administrativeInfo}'
-    }, ],
     Facets                          : [
         {
-            $Type  : 'UI.ReferenceFacet',
-            Target : '@UI.FieldGroup#Details',
-            Label  : '{i18n>pubblicationDetails}'
+            $Type  : 'UI.CollectionFacet',
+            Label  : '{i18n>pubblicationDetails}',
+            Facets : [
+                {
+                    $Type  : 'UI.ReferenceFacet',
+                    Target : '@UI.FieldGroup#Description',
+                },
+                {
+                    $Type  : 'UI.ReferenceFacet',
+                    Target : '@UI.FieldGroup#Details',
+                },
+            ],
         },
         {
             $Type  : 'UI.ReferenceFacet',
@@ -118,8 +116,8 @@ annotate PubblicationService.Pubblications with @(UI : {
     notifyUsers  @UI.Hidden;
     title        @title            :                '{i18n>pubblicationTitle}';
     originalDate @title            :                '{i18n>originalDate}';
-    areaName     @title : '{i18n>validFor}';
-    area_id      @title : '{i18n>validFor}';
+    areaName     @title            :                '{i18n>validFor}';
+    area_id      @title            :                '{i18n>validFor}';
     area         @Common.ValueList :                {
         $Type           : 'Common.ValueListType',
         CollectionPath  : 'Areas',
@@ -135,7 +133,8 @@ annotate PubblicationService.Pubblications with @(UI : {
                 ValueListProperty : 'name',
             },
         ],
-    } @Common.ValueListWithFixedValues : true @title : '{i18n>validFor}';
+    }            @Common.ValueListWithFixedValues : true  @title : '{i18n>validFor}';
+    description  @UI.MultiLineText  @title        : '{i18n>description}';
 }
 
 annotate PubblicationService.Areas with @(
@@ -178,10 +177,6 @@ annotate PubblicationService.Attachments with @(UI : {
             Value          : name,
             UrlContentType : mimeType,
             Url            : attachmentUrl
-        },
-        {
-            $Type : 'UI.DataField',
-            Value : createdBy,
         },
         {
             $Type : 'UI.DataField',
