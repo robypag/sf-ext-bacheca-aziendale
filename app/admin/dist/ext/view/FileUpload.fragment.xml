@@ -1,5 +1,0 @@
-<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:s="itg.sf.bachecaadmin.control">
-    <Dialog title="Select a File">
-        <s:FileUploaderV4 id="FileUploader" useMultipart="false" uploadUrl="/Attachments" uploadComplete="onUploadComplete"/>
-    </Dialog>
-</core:FragmentDefinition>

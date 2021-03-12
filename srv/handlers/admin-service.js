@@ -9,35 +9,35 @@ class AdminService extends cds.ApplicationService {
             console.info(req.target);
             if (pubblicationEntry.title === null) {
                 req.error({
-                    code: 'Il campo Titolo è obbligatorio',
+                    message: 'Il campo Titolo è obbligatorio',
                     // args: ['Titolo'],
                     status: 400
                 });                
             }
             if (pubblicationEntry.description === null) {
                 req.warn({
-                    code: 'Non è stata inserita alcuna descrizione',
+                    message: 'Non è stata inserita alcuna descrizione',
                     // args: ['Descrizione'],
                     status: 400
                 });                
             }            
             if (pubblicationEntry.area_id === null) {
                 req.error({
-                    code: 'Il campo Area RSU è obbligatorio',
+                    message: 'Il campo Area RSU è obbligatorio',
                     // args: ['Area RSU'],
                     status: 400
                 });
             }
             if (pubblicationEntry.type_code === null) {
                 req.error({
-                    code: 'Il campo Tipologia è obbligatorio',
+                    message: 'Il campo Tipologia è obbligatorio',
                     // args: ['Tipologia'],
                     status: 400
                 });
             }
             if (pubblicationEntry.originalDate === null) {
                 req.error({
-                    code: 'Il campo Data è obbligatorio',
+                    message: 'Il campo Data è obbligatorio',
                     // args: ['Data Accordo'],
                     status: 400
                 });
