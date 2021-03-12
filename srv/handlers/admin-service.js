@@ -37,7 +37,7 @@ class AdminService extends cds.ApplicationService {
             }
             if (pubblicationEntry.originalDate === null) {
                 req.error({
-                    code: 'Il campo Data Accordo è obbligatorio',
+                    code: 'Il campo Data è obbligatorio',
                     // args: ['Data Accordo'],
                     status: 400
                 });
