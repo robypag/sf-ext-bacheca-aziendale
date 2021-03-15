@@ -134,7 +134,8 @@ resources:
           service: hana
           service-plan: hdi-shared
           config:
-              database_id: 898cbdd4-1202-4153-a575-a4a166caa120
+              #database_id: 898cbdd4-1202-4153-a575-a4a166caa120
+              database_id: 5d5162e6-5609-446b-b296-fa77ebb4c151
       properties:
           hdi-container-name: ${service-name}
 
@@ -182,4 +183,4 @@ resources:
           service: sap-successfactors-extensibility
           service-plan: api-access
           config:
-              systemName: EC_PREPROD
+              systemName: EC_PROD
