@@ -47,12 +47,12 @@ class AdminService extends cds.ApplicationService {
         this.after("READ", "Attachments", async (each) => {
             if (Array.isArray(each)) {
                 each.forEach((e) => {
-                    e.attachmentUrl = `/admin/Attachments(ID=${e.ID},IsActiveEntity=${e.IsActiveEntity})/value`;
+                    e.attachmentUrl = `admin/Attachments(ID=${e.ID},IsActiveEntity=${e.IsActiveEntity})/value`;
                 });
             } else {
                 // Might be null, if we are requiring the media value of this entity
                 if (each !== null) {
-                    each.attachmentUrl = `/admin/Attachments(ID=${each.ID},IsActiveEntity=${each.IsActiveEntity})/value`;
+                    each.attachmentUrl = `admin/Attachments(ID=${each.ID},IsActiveEntity=${each.IsActiveEntity})/value`;
                 }
             }
         });
