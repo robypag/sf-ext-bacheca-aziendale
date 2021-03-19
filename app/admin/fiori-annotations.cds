@@ -35,7 +35,7 @@ annotate AdminService.Pubblications with @(
                 },
                 {
                     $Type : 'UI.DataField',
-                    Value : createdBy,
+                    Value : createdByUsername,
                 },
                 {
                     $Type : 'UI.DataField',
@@ -43,7 +43,7 @@ annotate AdminService.Pubblications with @(
                 },
                 {
                     $Type : 'UI.DataField',
-                    Value : modifiedBy,
+                    Value : modifiedByUsername,
                 },
             ],
         },
@@ -123,11 +123,11 @@ annotate AdminService.Pubblications with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : createdBy
+                Value : createdByUsername,
             },
             {
                 $Type : 'UI.DataField',
-                Value : modifiedBy
+                Value : modifiedByUsername,
             },
         ],
         SelectionFields                 : [
@@ -155,20 +155,22 @@ annotate AdminService.Pubblications with @(
 }
 
 annotate AdminService.Pubblications with {
-    ID           @title : '{i18n>pubblicationId}'  @UI.HiddenFilter  @Core.Computed;
-    title        @title : '{i18n>pubblicationTitle}';
-    area         @title : '{i18n>assignedArea}'  @Common     : {
+    ID                 @title : '{i18n>pubblicationId}'  @UI.HiddenFilter  @Core.Computed;
+    title              @title : '{i18n>pubblicationTitle}';
+    area               @title : '{i18n>assignedArea}'  @Common     : {
         Text            : area.name,
         TextArrangement : #TextOnly
     };
-    type         @title : '{i18n>pubblicationType}'  @Common : {
+    type               @title : '{i18n>pubblicationType}'  @Common : {
         Text            : type.name,
         TextArrangement : #TextOnly
     };
-    description  @UI.MultiLineText  @title                   : '{i18n>description}';
-    originalDate @title : '{i18n>originalDate}';
-    area_id      @title : '{i18n>validFor}';
-    type_code    @title : '{i18n>pubblicationType}';
+    description        @UI.MultiLineText  @title                   : '{i18n>description}';
+    originalDate       @title : '{i18n>originalDate}';
+    area_id            @title : '{i18n>validFor}';
+    type_code          @title : '{i18n>pubblicationType}';
+    createdByUsername  @title : 'Creato Da'  @Core.Computed  @readonly;
+    modifiedByUsername @title : 'Modificato Da'  @Core.Computed  @readonly;
 }
 
 annotate AdminService.Attachments with @(UI : {

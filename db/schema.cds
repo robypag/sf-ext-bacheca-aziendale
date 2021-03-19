@@ -17,36 +17,36 @@ entity PubblicationType {
  * browsed by Employees
  */
 @Common : {
-    ChangedAt   : modifiedAt,
-    ChangedBy   : modifiedBy,
-    CreatedAt   : createdAt,
-    CreatedBy   : createdBy,
-    Heading     : '{i18n>pubblicationList}',
-    Label       : '{i18n>pubblicationList}',
-    SemanticKey : [ID],
-    FilterExpressionRestrictions : [
-        {
-            $Type : 'Common.FilterExpressionRestrictionType',
-            Property: originalDate,
-            AllowedExpressions: #SingleInterval
-        },
-    ],
+    ChangedAt                    : modifiedAt,
+    ChangedBy                    : modifiedBy,
+    CreatedAt                    : createdAt,
+    CreatedBy                    : createdBy,
+    Heading                      : '{i18n>pubblicationList}',
+    Label                        : '{i18n>pubblicationList}',
+    SemanticKey                  : [ID],
+    FilterExpressionRestrictions : [{
+        $Type              : 'Common.FilterExpressionRestrictionType',
+        Property           : originalDate,
+        AllowedExpressions : #SingleInterval
+    }, ],
 }
 entity Pubblication : managed, cuid {
-    title       : String;
-    description : String;
-    criticality : Integer enum {
+    title              : String;
+    description        : String;
+    criticality        : Integer enum {
         Important   = 1; // Red
         Medium      = 2; // Yellow
         Advice      = 3; // Green
         Informative = 0; // Grey / Blue
     };
-    type        : Association to PubblicationType;
-    notifyUsers : Boolean;
-    originalDate : Date;
-    area        : Association to one Area;
-    attachment  : Composition of many Attachment
-                      on attachment.pubblication = $self;
+    type               : Association to PubblicationType;
+    notifyUsers        : Boolean;
+    originalDate       : Date;
+    createdByUsername  : String;
+    modifiedByUsername : String;
+    area               : Association to one Area;
+    attachment         : Composition of many Attachment
+                             on attachment.pubblication = $self;
 }
 
 /**
