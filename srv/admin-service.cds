@@ -22,7 +22,9 @@ service AdminService @(
             grant : ['WRITE'],
             to    : 'admin-user'
         }
-    ])                       as projection on db.Pubblication;
+    ])                       as projection on db.Pubblication {
+        * , null as iconUrl : String
+    }
 
 
     @Capabilities : {

@@ -8,6 +8,16 @@ class PubblicationService extends cds.ApplicationService {
     // Reject all HTTP verbs beside READ
     this.reject(["CREATE", "UPDATE", "DELETE"], ["SFUserInfo", "SFLocationInfo", "SFJobInfo"]);
 
+    this.after("READ", "Pubblications", async (each, req) => {
+      return each.map((e) => {
+        if (e.type_code === "2") {
+          e.iconUrl = "sap-icon://marketing-campaign";
+        } else {
+          e.iconUrl = "sap-icon://decision";
+        }
+      });
+    });
+
     /*
     this.after("READ", "Pubblications", async (result, req) => {
       // Lettura Location da SF:
@@ -16,7 +26,7 @@ class PubblicationService extends cds.ApplicationService {
       try {
         const currentDate = moment().format("YYYY-MM-DD");
         const jobInfoData = await EmploymentInfoService.get(
-          `/EmpJob?$filter=userId eq '${req.user.id}' and (startDate le '${currentDate}' and endDate ge '${currentDate}')`
+          `/EmpJob?$filter=userId eq '${req.user.id}' and (startDate le '${currentDate}' and endDate ge '${currentDate}')&$orderBy=startDate desc,seqNumber desc`
         );
         // Sort Data
         let currentJobInfo;

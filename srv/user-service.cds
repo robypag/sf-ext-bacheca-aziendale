@@ -19,8 +19,8 @@ service PubblicationService @(
     entity Pubblications @(restrict : [{
         grant : ['READ'],
         to    : 'authenticated-user'
-    }])                   as projection on db.Pubblication {
-        * , area.name as areaName
+    }])                      as projection on db.Pubblication {
+        * , area.name as areaName, null as iconUrl : String
     };
 
     @Capabilities : {
@@ -28,24 +28,25 @@ service PubblicationService @(
         Updatable  : false,
         Deletable  : false
     }
-    entity Attachments    as projection on db.Attachment {
+    entity Attachments       as projection on db.Attachment {
         * , null as attachmentUrl : String
     }
 
     @cds.autoexpose
-    entity Areas          as projection on db.Area;
+    entity Areas             as projection on db.Area;
+
     @cds.autoexpose
     entity PubblicationTypes as projection on db.PubblicationType;
 
     // Project external entities:
 
     @cds.persistence.skip
-    entity SFUserInfo     as projection on UserInfo.SFUser;
+    entity SFUserInfo        as projection on UserInfo.SFUser;
 
     @cds.persistence.skip
-    entity SFLocationInfo as projection on FoundationInfo.SFLocation;
+    entity SFLocationInfo    as projection on FoundationInfo.SFLocation;
 
     @cds.persistence.skip
-    entity SFJobInfo      as projection on EmploymentInfo.SFJobInfo;
+    entity SFJobInfo         as projection on EmploymentInfo.SFJobInfo;
 
 }

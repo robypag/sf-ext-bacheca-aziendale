@@ -23,6 +23,11 @@ annotate PubblicationService.Pubblications with @(UI : {
     ],
     LineItem                        : [
         {
+            $Type             : 'UI.DataField',
+            Value             : iconUrl,
+            ![@UI.Importance] : #High,
+        },
+        {
             $Type : 'UI.DataField',
             Value : title,
         },
@@ -112,6 +117,21 @@ annotate PubblicationService.Pubblications with @(UI : {
             }, ],
         }, ]
     },
+    SelectionVariant #Tutte         : {
+        $Type         : 'UI.SelectionVariantType',
+        Text          : '{i18n>selVarTutti}',
+        SelectOptions : [{
+            $Type        : 'UI.SelectOptionType',
+            PropertyName : type_code,
+            Ranges       : [{
+                $Type  : 'UI.SelectionRangeType',
+                Sign   : #I,
+                Option : #BT,
+                Low    : '1',
+                High   : '2',
+            }],
+        }, ]
+    },
 }) {
     notifyUsers  @UI.Hidden;
     title        @title            :                '{i18n>pubblicationTitle}';
@@ -135,6 +155,7 @@ annotate PubblicationService.Pubblications with @(UI : {
         ],
     }            @Common.ValueListWithFixedValues : true  @title : '{i18n>validFor}';
     description  @UI.MultiLineText  @title        : '{i18n>description}';
+    iconUrl      @UI.IsImageURL;
 }
 
 annotate PubblicationService.Areas with @(

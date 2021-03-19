@@ -65,12 +65,7 @@
       "tablet": true,
       "phone": true
     },
-    "supportedThemes": [
-      "sap_hcb",
-      "sap_belize",
-      "sap_fiori_3",
-      "sap_bluecrystal"
-    ]
+    "supportedThemes": ["sap_hcb", "sap_belize", "sap_fiori_3", "sap_bluecrystal"]
   },
   "sap.ui5": {
     "resources": {
@@ -167,12 +162,17 @@
                 "0": {
                   "key": "v0",
                   "entitySet": "Pubblications",
-                  "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Accordi"
+                  "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Tutte"
                 },
                 "1": {
                   "key": "v1",
                   "entitySet": "Pubblications",
                   "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Comunicazioni"
+                },
+                "2": {
+                  "key": "v2",
+                  "entitySet": "Pubblications",
+                  "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Accordi"
                 }
               }
             }

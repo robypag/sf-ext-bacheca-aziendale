@@ -1,4 +1,4 @@
-GET https://api2.successfactors.eu/odata/v2/EmpJob?$filter=userId eq '168153' and ( startDate le '2021-03-19' and endDate ge '2021-03-19' )&$format=json
+GET https://api2.successfactors.eu/odata/v2/EmpJob?$filter=userId eq '168153' and ( startDate le '2021-03-19' and endDate ge '2021-03-19' )&$format=json&$orderBy=startDate desc,seqNumber desc
 Authorization: Basic SFAPI@italgasretD:password
 
 ###
