@@ -14,9 +14,9 @@ service AdminService @(
     }
     entity Pubblications @(restrict : [
         {
-            grant : ['READ', ],
+            grant : ['READ'],
             to    : 'admin-user',
-        //where : 'area_id = $user.Area'
+        // where : 'area_id = $user.Area'
         },
         {
             grant : ['WRITE'],
@@ -35,7 +35,11 @@ service AdminService @(
     }
 
     @cds.autoexpose
-    entity Areas             as projection on db.Area;
+    entity Areas @(restrict : [{
+        grant : 'READ',
+        to    : 'admin-user',
+    // where : 'ID = $user.Area'
+    }])                      as projection on db.Area;
 
     @cds.autoexpose
     entity PubblicationTypes as projection on db.PubblicationType;

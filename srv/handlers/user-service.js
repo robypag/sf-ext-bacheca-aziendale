@@ -1,4 +1,5 @@
 const cds = require("@sap/cds");
+const moment = require("moment");
 
 class PubblicationService extends cds.ApplicationService {
   async init() {
@@ -6,6 +7,47 @@ class PubblicationService extends cds.ApplicationService {
     super.init();
     // Reject all HTTP verbs beside READ
     this.reject(["CREATE", "UPDATE", "DELETE"], ["SFUserInfo", "SFLocationInfo", "SFJobInfo"]);
+
+    /*
+    this.after("READ", "Pubblications", async (result, req) => {
+      // Lettura Location da SF:
+      const EmploymentInfoService = await cds.connect.to("ECEmploymentInformation");
+      const { SFJobInfo } = EmploymentInfoService.entities;
+      try {
+        const currentDate = moment().format("YYYY-MM-DD");
+        const jobInfoData = await EmploymentInfoService.get(
+          `/EmpJob?$filter=userId eq '${req.user.id}' and (startDate le '${currentDate}' and endDate ge '${currentDate}')`
+        );
+        // Sort Data
+        let currentJobInfo;
+        if (jobInfoData.length > 1) {
+          currentJobInfo = jobInfoData.sort((a, b) =>
+            moment(a.startDate).isBefore(moment(b.startDate)) ? -1 : moment(a.startDate).isAfter(b.startDate) ? 1 : 0
+          )[0];
+        } else {
+          currentJobInfo = jobInfoData[0];
+        }
+        // Location Servizio / Location Ruolo
+        const locationServizio = currentJobInfo.location;
+        const locationRuolo    = currentJobInfo.customString17;
+        // Ricerca Foundation Object
+        const FoundationObjectService = await cds.connect.to('ECFoundationOrganization');
+        const { SFLocationInfo } = FoundationObjectService.entities;
+        try {
+          const locationQuery = SELECT.from(SFLocationInfo).where(`externalCode = ${locationServizio}`);
+          const locationData  = FoundationObjectService.tx(req).run(locationQuery);
+          // --- locationData.rsu = 9;
+          result.filter( (r) => (r.area_id === locationData.rsu || r.area_id === 20) );
+
+        } catch (oError) {
+
+        }
+      } catch (oError) {
+        console.error(oError);
+      }
+    });
+    */
+
     this.after("READ", "Attachments", async (each) => {
       if (Array.isArray(each)) {
         each.forEach((e) => {
