@@ -29,6 +29,13 @@ entity PubblicationType {
         Property           : originalDate,
         AllowedExpressions : #SingleInterval
     }, ],
+    SortOrder  : [
+        {
+            $Type : 'Common.SortOrderType',
+            Property : modifiedAt,
+            Descending : true
+        },
+    ],
 }
 entity Pubblication : managed, cuid {
     title              : String;
