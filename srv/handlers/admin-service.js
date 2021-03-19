@@ -83,6 +83,16 @@ class AdminService extends cds.ApplicationService {
     });
 
     this.after("READ", "Pubblications", async (each, req) => {
+      return each.map((e) => {
+        if (e.type_code === "2") {
+          e.iconUrl = "sap-icon://marketing-campaign";
+        } else {
+          e.iconUrl = "sap-icon://decision";
+        }
+      });
+    });
+
+    this.after("READ", "Pubblications", async (each, req) => {
       const UserInfoService = await cds.connect.to("PLTUserManagement");
       const { SFUser } = UserInfoService.entities;
       return Promise.all(
@@ -106,45 +116,6 @@ class AdminService extends cds.ApplicationService {
           }
         })
       );
-      /*
-      const promises = [];
-      const UserInfoService = await cds.connect.to("PLTUserManagement");
-      const { SFUser } = UserInfoService.entities;
-      if (Array.isArray(result)) {
-        result.map((r) => {
-          // Se NON Bozza -> si recuperano i valori di creatoDa/modificatoDa
-          if (r.IsActiveEntity === true && r.HasActiveEntity === false) {
-            const queryModifiedBy = SELECT.from(SFUser, { userId: r.modifiedBy });
-            const queryCreatedBy = SELECT.from(SFUser, { userId: r.createdBy });
-            promises.push(
-              this.getUserName(UserInfoService.tx(req), queryModifiedBy, "modifiedBy", r),
-              this.getUserName(UserInfoService.tx(req), queryCreatedBy, "createdBy", r)
-            );
-          } else {
-            // Se Bozza -> non esistono i campi amministrativi, quindi si recupera autore ultima modifica bozza
-            const queryCreatedBy = SELECT.from(SFUser, { userId: r.DraftAdministrativeData.LastChangedByUser });
-            promises.push(this.getUserName(UserInfoService.tx(req), queryCreatedBy, "createdBy", r));
-          }
-        });
-        const resultWithNames = await Promise.all(promises);
-        return resultWithNames.map((r) => {
-          if (r.modifiedBy === undefined) {
-            r.modifiedBy = r.createdBy;
-            r.modifiedAt = r.createdAt;
-          }
-          return r;
-        });
-      } else {
-        const queryModifiedBy = SELECT.from(SFUser, { userId: result.modifiedBy });
-        const queryCreatedBy = SELECT.from(SFUser, { userId: result.createdBy });
-        promises.push(
-          this.getUserName(UserInfoService.tx(req), queryModifiedBy, "modifiedBy", result),
-          this.getUserName(UserInfoService.tx(req), queryCreatedBy, "createdBy", result)
-        );
-        await Promise.all(promises);
-        return result;
-      }
-      */
     });
 
     this.after("READ", "Attachments", async (each) => {

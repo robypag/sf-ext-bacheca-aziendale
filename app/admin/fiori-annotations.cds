@@ -99,6 +99,11 @@ annotate AdminService.Pubblications with @(
         ],
         LineItem                        : [
             {
+                $Type             : 'UI.DataField',
+                Value             : iconUrl,
+                ![@UI.Importance] : #High,
+            },
+            {
                 $Type : 'UI.DataField',
                 Value : ID,
             },
@@ -171,6 +176,7 @@ annotate AdminService.Pubblications with {
     type_code          @title : '{i18n>pubblicationType}';
     createdByUsername  @title : 'Creato Da'  @Core.Computed  @readonly;
     modifiedByUsername @title : 'Modificato Da'  @Core.Computed  @readonly;
+    iconUrl            @UI.IsImageURL
 }
 
 annotate AdminService.Attachments with @(UI : {
