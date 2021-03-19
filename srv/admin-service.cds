@@ -1,4 +1,5 @@
 using {sf.ext.bachecaziendale as db} from '../db/schema';
+using {PLTUserManagement as UserInfo} from './external/PLTUserManagement.csn';
 
 service AdminService @(
     path     : 'admin',
@@ -21,7 +22,9 @@ service AdminService @(
             grant : ['WRITE'],
             to    : 'admin-user'
         }
-    ])                    as projection on db.Pubblication;
+    ])                       as projection on db.Pubblication {
+        * , null as createdByName : String, null as modifiedByName : String
+    }
 
 
     @Capabilities : {
@@ -29,19 +32,23 @@ service AdminService @(
         Updatable  : false,
         Deletable  : true
     }
-    entity Attachments    as projection on db.Attachment {
+    entity Attachments       as projection on db.Attachment {
         * , null as attachmentUrl : String
     }
 
     @cds.autoexpose
-    entity Areas          as projection on db.Area;
+    entity Areas             as projection on db.Area;
+
     @cds.autoexpose
     entity PubblicationTypes as projection on db.PubblicationType;
 
     @cds.autoexpose
-    entity LocationGroups as projection on db.LocationGroup;
+    entity LocationGroups    as projection on db.LocationGroup;
 
     @cds.autoexpose
-    entity Locations      as projection on db.Location;
+    entity Locations         as projection on db.Location;
+
+    @cds.persistence.skip
+    entity SFUserInfo        as projection on UserInfo.SFUser;
 
 }

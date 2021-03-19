@@ -28,10 +28,24 @@ annotate AdminService.Pubblications with @(
         }, ],
         FieldGroup #AdminInfo           : {
             $Type : 'UI.FieldGroupType',
-            Data  : [{
-                $Type : 'UI.DataField',
-                Value : createdAt,
-            }],
+            Data  : [
+                {
+                    $Type : 'UI.DataField',
+                    Value : createdAt,
+                },
+                {
+                    $Type : 'UI.DataField',
+                    Value : createdBy,
+                },
+                {
+                    $Type : 'UI.DataField',
+                    Value : modifiedAt,
+                },
+                {
+                    $Type : 'UI.DataField',
+                    Value : modifiedBy,
+                },
+            ],
         },
         FieldGroup #Description         : {
             $Type : 'UI.FieldGroupType',
@@ -110,7 +124,11 @@ annotate AdminService.Pubblications with @(
             {
                 $Type : 'UI.DataField',
                 Value : createdBy
-            }
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : modifiedBy
+            },
         ],
         SelectionFields                 : [
             type_code,

@@ -30,7 +30,13 @@
         "auth": {
           "strategy": "mock",
           "users": {
-            "admin": {
+            "168153": {
+              "password": "admin",
+              "roles": [
+                "admin-user"
+              ]
+            },
+            "adminBC": {
               "password": "admin",
               "roles": [
                 "admin-user"
@@ -136,6 +142,12 @@
             "path": "/odata/v2"
           }
         }
+      }
+    },
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "model": "*"
       }
     }
   }
