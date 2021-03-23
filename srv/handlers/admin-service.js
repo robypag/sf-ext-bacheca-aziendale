@@ -110,6 +110,7 @@ class AdminService extends cds.ApplicationService {
             return e;
           } catch (oError) {
             console.error("Error fetching data from SuccessFactors, defaulting to Anonymous user");
+            console.error(oError);
             e.createdByUsername = "Anonymous";
             e.modifiedByUsername = "Anonymous";
             return e;

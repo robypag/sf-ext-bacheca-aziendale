@@ -60,7 +60,7 @@ annotate PubblicationService.Pubblications with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
-                Value : type.name
+                Value : type_code
             },
             {
                 $Type : 'UI.DataField',
@@ -132,6 +132,15 @@ annotate PubblicationService.Pubblications with @(UI : {
             }],
         }, ]
     },
+    PresentationVariant : {
+    $Type : 'UI.PresentationVariantType',
+    SortOrder : [
+        {
+            $Type : 'Common.SortOrderType',
+            Property : modifiedAt,
+            Descending : true,
+        }, ],
+    },
 }) {
     notifyUsers  @UI.Hidden;
     title        @title            :                '{i18n>pubblicationTitle}';
@@ -156,6 +165,10 @@ annotate PubblicationService.Pubblications with @(UI : {
     }            @Common.ValueListWithFixedValues : true  @title : '{i18n>validFor}';
     description  @UI.MultiLineText  @title        : '{i18n>description}';
     iconUrl      @UI.IsImageURL;
+    type    @title : '{i18n>pubblicationType}'  @Common : {
+        Text            : type.name,
+        TextArrangement : #TextOnly
+    };
 }
 
 annotate PubblicationService.Areas with @(

@@ -16,11 +16,11 @@
   "role-templates": [{
     "name": "AreaAdministrator",
     "description": "Manage Pubblications for the associated Area",
-    "scope-references": ["$XSAPPNAME.admin-user"],
+    "scope-references": ["$XSAPPNAME.admin-user", "uaa.user"],
     "attribute-references": ["Area"]
   }, {
     "name": "Employee",
     "description": "Standard Employee, read-only access",
-    "scope-references": ["$XSAPPNAME.employee"]
+    "scope-references": ["$XSAPPNAME.employee", "uaa.user"]
   }]
 }

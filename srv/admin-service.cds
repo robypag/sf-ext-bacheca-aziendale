@@ -24,7 +24,7 @@ service AdminService @(
         }
     ])                       as projection on db.Pubblication {
         * , null as iconUrl : String
-    }
+    } order by modifiedAt desc
 
 
     @Capabilities : {

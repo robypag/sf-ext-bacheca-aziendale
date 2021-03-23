@@ -6,6 +6,8 @@ default-*.json
 gen/
 node_modules/
 target/
+dist/
+ui_deployer/resources/*.zip
 
 # Web IDE, App Studio
 .che/
@@ -15,6 +17,7 @@ target/
 *_mta_build_tmp
 *.mtar
 mta_archives/
+mta*/
 
 # Other
 .DS_Store
@@ -27,3 +30,6 @@ mta_archives/
 # IDEs
 # .vscode
 # .idea
+mta.yaml
+.gitignore
+node_modules

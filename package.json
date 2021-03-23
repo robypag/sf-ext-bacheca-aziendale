@@ -125,7 +125,7 @@
           "kind": "odata",
           "model": "srv/external/ECFoundationOrganization",
           "credentials": {
-            "destination": "sf-ext-system-api-access",
+            "destination": "cloud-sf-extension-api-admin-access",
             "path": "/odata/v2"
           }
         },
@@ -133,7 +133,7 @@
           "kind": "odata",
           "model": "srv/external/ECEmploymentInformation",
           "credentials": {
-            "destination": "sf-ext-system-api-access",
+            "destination": "cloud-sf-extension-api-admin-access",
             "path": "/odata/v2"
           }
         },
@@ -141,7 +141,7 @@
           "kind": "odata",
           "model": "srv/external/PLTUserManagement",
           "credentials": {
-            "destination": "sf-ext-system-api-access",
+            "destination": "cloud-sf-extension-api-admin-access",
             "path": "/odata/v2"
           }
         },
@@ -149,7 +149,7 @@
           "kind": "odata",
           "model": "srv/external/PLTTodo",
           "credentials": {
-            "destination": "sf-ext-system-api-access",
+            "destination": "cloud-sf-extension-api-admin-access",
             "path": "/odata/v2"
           }
         }
@@ -159,6 +159,10 @@
       "db": {
         "kind": "sqlite",
         "model": "*"
+      },
+      "PLTUserManagement": {
+        "kind": "odata",
+        "model": "srv\\external\\PLTUserManagement"
       }
     }
   }

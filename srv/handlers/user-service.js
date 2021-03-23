@@ -8,14 +8,27 @@ class PubblicationService extends cds.ApplicationService {
     // Reject all HTTP verbs beside READ
     this.reject(["CREATE", "UPDATE", "DELETE"], ["SFUserInfo", "SFLocationInfo", "SFJobInfo"]);
 
-    this.after("READ", "Pubblications", async (each, req) => {
-      return each.map((e) => {
-        if (e.type_code === "2") {
-          e.iconUrl = "sap-icon://marketing-campaign";
-        } else {
-          e.iconUrl = "sap-icon://decision";
+    this.after("READ", "Pubblications", async (each) => {
+      if (Array.isArray(each)) {
+        return each.map((e) => {
+         if (e.type !== undefined)
+         { 
+         if (e.type.code === "2") {
+           e.iconUrl = "sap-icon://marketing-campaign";
+         } else {
+           e.iconUrl = "sap-icon://decision";
+         }
+        }});
+       } else {
+        if (each.type !== undefined){
+         if (each.type.code === "2") {
+           each.iconUrl = "sap-icon://marketing-campaign";
+         } else {
+           each.iconUrl = "sap-icon://decision";
+         }
         }
-      });
+        return each;
+       }
     });
 
     /*
