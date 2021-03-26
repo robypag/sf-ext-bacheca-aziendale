@@ -31,7 +31,7 @@ class PubblicationService extends cds.ApplicationService {
        }
     });
 
-    /*
+    
     this.after("READ", "Pubblications", async (result, req) => {
       // Lettura Location da SF:
       const EmploymentInfoService = await cds.connect.to("ECEmploymentInformation");
@@ -53,15 +53,17 @@ class PubblicationService extends cds.ApplicationService {
         // Location Servizio / Location Ruolo
         const locationServizio = currentJobInfo.location;
         const locationRuolo    = currentJobInfo.customString17;
+        const areaRsu = currentJobInfo.customString24;
         // Ricerca Foundation Object
-        const FoundationObjectService = await cds.connect.to('ECFoundationOrganization');
-        const { SFLocationInfo } = FoundationObjectService.entities;
+        //const FoundationObjectService = await cds.connect.to('ECFoundationOrganization');
+        //const { SFLocationInfo } = FoundationObjectService.entities;
         try {
-          const locationQuery = SELECT.from(SFLocationInfo).where(`externalCode = ${locationServizio}`);
-          const locationData  = FoundationObjectService.tx(req).run(locationQuery);
+          //const locationQuery = SELECT.from(SFLocationInfo).where(`externalCode = ${locationServizio}`);
+          //const locationData  = FoundationObjectService.tx(req).run(locationQuery);
           // --- locationData.rsu = 9;
-          result.filter( (r) => (r.area_id === locationData.rsu || r.area_id === 20) );
-
+         const filtered = result.filter( (r) => (r.area.id === parseInt(areaRsu)|| r.area.id === 20));
+         console.log(filtered);
+         return filtered;
         } catch (oError) {
 
         }
@@ -69,7 +71,6 @@ class PubblicationService extends cds.ApplicationService {
         console.error(oError);
       }
     });
-    */
 
     this.after("READ", "Attachments", async (each) => {
       if (Array.isArray(each)) {

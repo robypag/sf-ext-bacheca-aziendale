@@ -37,7 +37,7 @@ annotate PubblicationService.Pubblications with @(UI : {
         },
         {
             $Type : 'UI.DataField',
-            Value : areaName,
+            Value : area.name,
         },
         {
             $Type : 'UI.DataField',

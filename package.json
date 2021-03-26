@@ -61,6 +61,12 @@
               "roles": [
                 "employee"
               ]
+            },
+            "SPGRMN80L45C816L": {
+              "password": "password",
+              "roles": [
+                "employee"
+              ]
             }
           }
         },
